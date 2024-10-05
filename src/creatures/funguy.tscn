@@ -25,10 +25,12 @@ texture = ExtResource("2_64nkj")
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
 position = Vector2(-4, 4)
 target_position = Vector2(0, 1)
+collision_mask = 16
 
 [node name="GrassDetectorRight" type="RayCast2D" parent="."]
 position = Vector2(4, 4)
 target_position = Vector2(0, 1)
+collision_mask = 16
 
 [node name="PossessArea" type="Area2D" parent="."]
 collision_layer = 0

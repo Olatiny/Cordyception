@@ -55,7 +55,7 @@ func update_state():
 	if my_state == STATE.POSSESSING:
 		return
 	
-	if !grass_raycast_left.is_colliding() && !grass_raycast_right.is_colliding():
+	if grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
 		if not is_on_floor():
 			my_state = STATE.SPORE_MODE
 		else:
@@ -71,6 +71,7 @@ func possess():
 	var valid_bugs: Array[Node2D] = possess_area.get_overlapping_bodies()
 	valid_bugs.erase(self)
 	print("possess ",valid_bugs," ",valid_bugs.size())
+	
 	# no bugs to possess
 	if valid_bugs.size() <= 0:
 		possess_shape.disabled
@@ -81,6 +82,7 @@ func possess():
 	for bug in valid_bugs:
 		if bug.position - position < closest_bug.position - position:
 			closest_bug = bug
+	
 	print("closest bug ", closest_bug)
 	if(closest_bug != null && closest_bug.try_possess()):
 		queue_free()
@@ -101,10 +103,10 @@ func update_animation():
 func check_move():
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if !grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
+	if grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
 		direction = 0
 	
-	if !grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
+	if grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
 		direction = 0
 	
 	if direction:
