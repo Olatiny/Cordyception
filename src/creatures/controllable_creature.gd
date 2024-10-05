@@ -14,6 +14,9 @@ extends CharacterBody2D
 ## Whether an object is being controlled
 @export var controlled := false
 
+## Number of times the secondary ability can be used
+@export var num_secondary_uses := 3
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
