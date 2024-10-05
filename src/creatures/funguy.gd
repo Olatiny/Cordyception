@@ -63,7 +63,7 @@ func possess():
 	
 	var valid_bugs: Array[Node2D] = possess_area.get_overlapping_bodies()
 	valid_bugs.erase(self)
-	
+	print("possess ",valid_bugs," ",valid_bugs.size())
 	# no bugs to possess
 	if valid_bugs.size() <= 0:
 		possess_shape.disabled
@@ -74,8 +74,9 @@ func possess():
 	for bug in valid_bugs:
 		if bug.position - position < closest_bug.position - position:
 			closest_bug = bug
-	
-	# TODO: possess closest_bug
+	print("closest bug ", closest_bug)
+	if(closest_bug != null && closest_bug.try_possess()):
+		queue_free()
 	
 	possess_shape.disabled = true
 

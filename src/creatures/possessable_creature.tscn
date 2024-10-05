@@ -1,29 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxllokjusir67"]
+[gd_scene load_steps=4 format=3 uid="uid://bntq5gfrxuq2d"]
 
 [ext_resource type="Script" path="res://src/creatures/possessable_creature.gd" id="1_puoom"]
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_1vvi6"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2spbu"]
-radius = 62.0
-height = 146.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qqwow"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_1vvi6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
+size = Vector2(128, 128)
 
 [node name="possessable_creature" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_puoom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_2spbu")
+shape = SubResource("RectangleShape2D_422cx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
-sprite_frames = SubResource("SpriteFrames_qqwow")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1vvi6")
