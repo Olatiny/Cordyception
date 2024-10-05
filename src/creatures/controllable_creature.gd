@@ -1,36 +1,55 @@
-extends CharacterBody2D
 class_name ControllableCreature
+extends CharacterBody2D
 
-@export var creature_movement : BaseCreature
-@export var base_node : Node
 
-var controlled := false
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+## Player's movement speed
+@export var walk_speed := 75.0
+
+## Player's gravity
+@export var gravity := 75.0
+
+## Maximum x & y velocities
+@export var terminal_velocity := Vector2(75, 75)
+
+## Whether an object is being controlled
+@export var controlled := false
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y += gravity * delta
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Handles all possible activities of a character while it is controlled
 	if(controlled):
-		var direction := Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_down", "ui_up"))
-		fire_movement(direction)
-		
-		##check primary and secondary inputs
-
+		check_move()
+		check_jump()
+		check_primary_action()
+		check_secondary_action()
+		update_animation()
+	
+	velocity.x = clampf(velocity.x, -terminal_velocity.x, terminal_velocity.x)
+	velocity.y = clampf(velocity.y, -terminal_velocity.y, terminal_velocity.y)
+	
 	move_and_slide()
 
-func fire_primary_action() -> void:
-	creature_movement.primary_action()
 
-func fire_secondary_action() -> void:
-	creature_movement.secondary_action()
+func check_primary_action() -> void:
+	pass
 
-func fire_movement(move_dir: Vector2) -> void:
-	creature_movement.move(move_dir)
 
-func get_movement() -> BaseCreature:
-	return creature_movement
+func check_secondary_action() -> void:
+	pass
+
+
+func check_move():
+	pass
+
+
+func check_jump():
+	if (Input.is_action_just_pressed("jump")):
+		velocity.y = -walk_speed * 4
+
+
+func update_animation():
+	pass

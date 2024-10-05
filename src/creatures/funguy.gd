@@ -1,5 +1,5 @@
 class_name FunGuy
-extends CharacterBody2D
+extends ControllableCreature
 
 
 ## States the player can be in
@@ -14,15 +14,6 @@ enum STATE {
 ## Current STATE
 var my_state := STATE.SPORE_MODE
 
-
-## Player's movement speed
-@export var walk_speed := 75.0
-
-## Player's gravity
-@export var gravity := 75.0
-
-## Maximum x & y velocities
-@export var terminal_velocity := Vector2(75, 75)
 
 ## Total number of possessions the player can make
 @export var num_possessions := 5
@@ -49,24 +40,13 @@ var _remaining_possessions = num_possessions
 func _physics_process(delta: float) -> void:
 	update_state()
 	
-	if not is_on_floor() && STATE.SPORE_MODE == my_state:
-		velocity = Vector2(velocity.x, clampf(velocity.y + gravity * delta, 0, terminal_velocity.y))
-	
-	# debug jump lol
-	#if (Input.is_action_just_pressed("jump")):
-		#velocity.y = -walk_speed * 4
-	
 	if Input.is_action_just_pressed("possess"):
 		possess()
 	
-	movement()
-	
-	update_animation()
-	
-	move_and_slide()
+	super(delta)
 
 
-##
+## TODO: this comment
 func update_state():
 	if my_state == STATE.POSSESSING:
 		return
@@ -110,16 +90,21 @@ func update_animation():
 
 
 ## Handles movement according to player's state
-func movement():
+func check_move():
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if !grass_raycast_left.is_colliding() && direction < 0:
+	if !grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
 		direction = 0
 	
-	if !grass_raycast_right.is_colliding() && direction > 0:
+	if !grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
 		direction = 0
 	
 	if direction:
 		velocity.x = direction * walk_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, walk_speed / 4)
+		velocity.x = move_toward(velocity.x, 0, walk_speed)
+
+
+## Overridden to do NOTHING (player CANNOT jump)
+func check_jump():
+	pass
