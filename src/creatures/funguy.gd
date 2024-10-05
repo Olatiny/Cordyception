@@ -7,19 +7,22 @@ enum STATE {
 	IDLE,
 	WALKING,
 	CLIMBING,
-	SEED_MODE,
+	SPORE_MODE,
 	POSSESSING
 }
 
 ## Current STATE
-var my_state := STATE.SEED_MODE
+var my_state := STATE.SPORE_MODE
 
 
 ## Player's movement speed
 @export var walk_speed := 75.0
 
 ## Player's gravity
-@export var gravity := Vector2(0, 653.0)
+@export var gravity := 75.0
+
+## Maximum x & y velocities
+@export var terminal_velocity := Vector2(75, 75)
 
 ## Total number of possessions the player can make
 @export var num_possessions := 5
@@ -44,8 +47,10 @@ var _remaining_possessions = num_possessions
 
 ## process the physucs
 func _physics_process(delta: float) -> void:
-	if not is_on_floor() && STATE.SEED_MODE == my_state:
-		velocity += gravity * delta
+	update_state()
+	
+	if not is_on_floor() && STATE.SPORE_MODE == my_state:
+		velocity = Vector2(velocity.x, clampf(velocity.y + gravity * delta, 0, terminal_velocity.y))
 	
 	# debug jump lol
 	#if (Input.is_action_just_pressed("jump")):
@@ -54,11 +59,22 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("possess"):
 		possess()
 	
-	update_animation()
-	
 	movement()
 	
+	update_animation()
+	
 	move_and_slide()
+
+
+##
+func update_state():
+	if my_state == STATE.POSSESSING:
+		return
+	
+	if !grass_raycast_left.is_colliding() && !grass_raycast_right.is_colliding():
+		my_state = STATE.SPORE_MODE
+	else:
+		my_state = STATE.IDLE
 
 
 ## Handles bug possession
@@ -106,4 +122,4 @@ func movement():
 	if direction:
 		velocity.x = direction * walk_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, walk_speed)
+		velocity.x = move_toward(velocity.x, 0, walk_speed / 4)

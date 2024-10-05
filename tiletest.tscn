@@ -295,4 +295,4 @@ position = Vector2(120, 67)
 offset = Vector2(0, 0.5)
 
 [node name="Funguy" parent="." instance=ExtResource("2_vd5dh")]
-position = Vector2(148, 56)
+position = Vector2(172, 52)
