@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://crc71tro6bgyn"]
+
+[sub_resource type="Gradient" id="Gradient_b0q73"]
+offsets = PackedFloat32Array(0, 0.634021, 1)
+colors = PackedColorArray(0.414872, 0.307055, 0, 1, 0.532501, 0.446358, 0.201031, 1, 0.270588, 0.717647, 0.298039, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_18m3u"]
+gradient = SubResource("Gradient_b0q73")
+
+[sub_resource type="Curve" id="Curve_afpht"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.540541, 0.879121), 0.0, 0.0, 0, 0, Vector2(0.887387, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1s483"]
+curve = SubResource("Curve_afpht")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3o6ai"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 1)
+spread = 180.0
+initial_velocity_max = 41.6
+gravity = Vector3(0, 98, 0)
+damping_max = 100.0
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_1s483")
+color_initial_ramp = SubResource("GradientTexture1D_18m3u")
+turbulence_enabled = true
+turbulence_noise_strength = 5.55
+turbulence_noise_speed_random = 2.98
+
+[sub_resource type="Animation" id="Animation_bfnt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0w2cg"]
+resource_name = "basic"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxai3"]
+_data = {
+"RESET": SubResource("Animation_bfnt6"),
+"basic": SubResource("Animation_0w2cg")
+}
+
+[node name="BlockBlowUpFx" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_3o6ai")
+explosiveness = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxai3")
+}
+autoplay = "basic"

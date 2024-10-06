@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7mft4fr1ldx1"]
+
+[ext_resource type="PackedScene" uid="uid://coqwc26wxxg2i" path="res://src/blocks/block.tscn" id="1_ssjdk"]
+[ext_resource type="PackedScene" uid="uid://bn5iw8gdqotvq" path="res://src/blocks/block components/pushable.tscn" id="2_dqdl7"]
+[ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="2_hkfum"]
+[ext_resource type="PackedScene" uid="uid://dvdvplm8qefdc" path="res://src/blocks/block components/descructible.tscn" id="3_dp77u"]
+
+[node name="DirtBlock" instance=ExtResource("1_ssjdk")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_hkfum")
+hframes = 5
+frame = 3
+
+[node name="Pushable" parent="." index="2" instance=ExtResource("2_dqdl7")]
+
+[node name="Descructible" parent="." index="3" instance=ExtResource("3_dp77u")]

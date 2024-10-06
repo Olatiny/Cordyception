@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bohfdkcnf15e0"]
+[gd_scene load_steps=6 format=3 uid="uid://bohfdkcnf15e0"]
 
 [ext_resource type="Script" path="res://src/creatures/grasshopper.gd" id="1_x582e"]
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_mjyuk"]
@@ -8,6 +8,9 @@ size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1swi"]
 size = Vector2(128, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22vbp"]
+radius = 61.2944
 
 [node name="grasshopper" type="CharacterBody2D"]
 collision_layer = 2
@@ -28,5 +31,17 @@ collision_mask = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
 position = Vector2(0, 63)
 shape = SubResource("RectangleShape2D_w1swi")
+
+[node name="PushBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="PushBox"]
+position = Vector2(64, 0)
+shape = SubResource("CircleShape2D_22vbp")
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="PushBox"]
+position = Vector2(-64, 0)
+shape = SubResource("CircleShape2D_22vbp")
 
 [connection signal="body_entered" from="FloorDetector" to="." method="_on_land"]
