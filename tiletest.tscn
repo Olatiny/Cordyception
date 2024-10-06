@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://cgj1i46j05itd"]
 
-[ext_resource type="PackedScene" path="res://src/blocks/boulder_block.tscn" id="1_7hgf1"]
+[ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block.tscn" id="1_7hgf1"]
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_hffu4"]
 [ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="2_0buje"]
 [ext_resource type="PackedScene" path="res://src/blocks/dirt_block.tscn" id="2_d2o7o"]
@@ -317,4 +317,3 @@ terminal_velocity = Vector2(75, 100)
 [node name="grasshopper" parent="." instance=ExtResource("4_vvvuw")]
 position = Vector2(208, 72)
 scale = Vector2(0.1, 0.1)
-big_jump_velocity = 1000

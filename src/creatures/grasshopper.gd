@@ -6,7 +6,7 @@ extends PossessableCreature
 @export var small_jump_velocity := 50
 
 ## jump velocity for big jump
-@export var big_jump_velocity := 450
+@export var big_jump_velocity := 1000
 
 
 ## area 2D for push secondary action

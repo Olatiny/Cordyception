@@ -1,15 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn5iw8gdqotvq"]
+[gd_scene load_steps=2 format=3 uid="uid://bn5iw8gdqotvq"]
 
 [ext_resource type="Script" path="res://src/blocks/block components/pushable.gd" id="1_7ynm0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f8wd"]
-size = Vector2(12, 8)
-
 [node name="Pushable" type="Area2D"]
-visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_7ynm0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1f8wd")

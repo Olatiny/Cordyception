@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_64nkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(7, 8)
+size = Vector2(7, 7.75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pgplg"]
 radius = 4.0
@@ -14,8 +14,10 @@ height = 16.0
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_mojjp")
-jump_velocity = 60.0
-gravity = 150.0
+jump_velocity = 90.0
+walk_speed = 30.0
+gravity = 450.0
+terminal_velocity = Vector2(75, 300)
 controlled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,7 +25,7 @@ scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_422cx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.065, 0.13)
+scale = Vector2(0.065, 0.125)
 texture = ExtResource("2_64nkj")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
