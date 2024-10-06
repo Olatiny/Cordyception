@@ -67,6 +67,7 @@ secondary_ability={
 2d_physics/layer_1="grass"
 2d_physics/layer_2="creature"
 2d_physics/layer_3="prop"
+2d_physics/layer_4="Poison"
 2d_physics/layer_5="stone"
 
 [rendering]

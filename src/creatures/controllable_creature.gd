@@ -21,7 +21,7 @@ var physics_collisions : Array
 ## The current direction we are facing
 var face_direction := Vector2.RIGHT
 
-
+## Max was hee
 ## Maximum number of times secondary can be used
 var _max_secondary_uses := num_secondary_uses
 
@@ -70,6 +70,7 @@ func check_jump():
 
 func update_animation():
 	pass
+
 
 func check_unpossess():
 	pass
