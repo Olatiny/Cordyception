@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=4 uid="uid://cgj1i46j05itd"]
 
-[ext_resource type="PackedScene" uid="uid://balw7bc3oseib" path="res://src/blocks/boulder_block.tscn" id="1_7hgf1"]
+[ext_resource type="PackedScene" path="res://src/blocks/boulder_block.tscn" id="1_7hgf1"]
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_hffu4"]
 [ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="2_0buje"]
-[ext_resource type="PackedScene" uid="uid://b7mft4fr1ldx1" path="res://src/blocks/dirt_block.tscn" id="2_d2o7o"]
+[ext_resource type="PackedScene" path="res://src/blocks/dirt_block.tscn" id="2_d2o7o"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="2_vd5dh"]
-[ext_resource type="PackedScene" uid="uid://dmlabbdllf11i" path="res://src/blocks/grass_block.tscn" id="3_f2yu6"]
+[ext_resource type="PackedScene" path="res://src/blocks/grass_block.tscn" id="3_f2yu6"]
 [ext_resource type="PackedScene" uid="uid://bohfdkcnf15e0" path="res://src/creatures/grasshopper.tscn" id="4_vvvuw"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_b133w"]
@@ -305,12 +305,16 @@ tile_map_data = PackedByteArray("AAASAAkAAAAAAAAAAgAVAAkAAAAAAAAAAwAYAAkAAAAAAAA
 tile_set = SubResource("TileSet_2krcb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(171, 68)
-zoom = Vector2(2.145, 2.145)
+position = Vector2(160, 90)
 
 [node name="Funguy" parent="." instance=ExtResource("2_vd5dh")]
-position = Vector2(172, 52)
+position = Vector2(168, 52)
+jump_velocity = 80.0
+walk_speed = 30.0
+gravity = 350.0
+terminal_velocity = Vector2(75, 100)
 
 [node name="grasshopper" parent="." instance=ExtResource("4_vvvuw")]
-position = Vector2(212, 71)
+position = Vector2(208, 72)
 scale = Vector2(0.1, 0.1)
+big_jump_velocity = 1000
