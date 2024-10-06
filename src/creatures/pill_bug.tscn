@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqmmatkoh6y4v"]
+
+[ext_resource type="Script" path="res://src/creatures/pill_bug.gd" id="1_kbjn7"]
+[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_vqs1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1swi"]
+size = Vector2(128, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22vbp"]
+radius = 61.2944
+
+[node name="PillBug" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_kbjn7")
+small_jump_velocity = null
+big_jump_velocity = null
+walk_speed = null
+gravity = null
+terminal_velocity = null
+controlled = null
+num_secondary_uses = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_422cx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vqs1y")
+
+[node name="FloorDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
+position = Vector2(0, 63)
+shape = SubResource("RectangleShape2D_w1swi")
+
+[node name="PushBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="PushBox"]
+position = Vector2(64, 0)
+shape = SubResource("CircleShape2D_22vbp")
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="PushBox"]
+position = Vector2(-64, 0)
+shape = SubResource("CircleShape2D_22vbp")
+
+[connection signal="body_entered" from="FloorDetector" to="." method="_on_land"]
