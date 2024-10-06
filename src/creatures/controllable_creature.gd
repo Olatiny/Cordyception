@@ -18,6 +18,10 @@ extends CharacterBody2D
 @export var num_secondary_uses := 3
 
 
+## Maximum number of times secondary can be used
+var _max_secondary_uses := num_secondary_uses
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

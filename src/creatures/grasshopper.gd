@@ -1,0 +1,53 @@
+class_name Grasshopper
+extends PossessableCreature
+
+
+## jump velocity for small jump
+@export var small_jump_velocity := 50
+
+## jump velocity for big jump
+@export var big_jump_velocity := 450
+
+
+var primary_used := false
+
+
+## Grasshopper Big Jump
+func check_primary_action() -> void:
+	if not is_on_floor() || !Input.is_action_just_pressed("primary_ability"):
+		return
+	
+	velocity.y = -big_jump_velocity
+	primary_used = true
+
+
+## Grasshopper Push Block
+func check_secondary_action() -> void:
+	pass
+
+
+## Movement controls
+func check_move():
+	var direction := Input.get_axis("move_left", "move_right")
+	
+	if direction:
+		velocity.x = direction * walk_speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, walk_speed)
+
+
+## Checks for jump
+func check_jump():
+	if (Input.is_action_just_pressed("jump")):
+		velocity.y = -small_jump_velocity
+
+
+## TODO: animations
+func update_animation():
+	pass
+
+
+## When grasshopper lands after using big jump, kil
+func _on_land(body: Node2D) -> void:
+	if primary_used && velocity.y >= 0:
+		unpossess(true)

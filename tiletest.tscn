@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://cgj1i46j05itd"]
+[gd_scene load_steps=9 format=4 uid="uid://cgj1i46j05itd"]
 
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_hffu4"]
 [ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="2_0buje"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="2_vd5dh"]
-[ext_resource type="PackedScene" uid="uid://bntq5gfrxuq2d" path="res://src/creatures/possessable_creature.tscn" id="4_bafdu"]
+[ext_resource type="PackedScene" uid="uid://bohfdkcnf15e0" path="res://src/creatures/grasshopper.tscn" id="4_vvvuw"]
+[ext_resource type="PackedScene" uid="uid://coqwc26wxxg2i" path="res://src/blocks/block.tscn" id="5_niyoj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cao6j"]
 texture = ExtResource("1_hffu4")
@@ -298,6 +299,9 @@ offset = Vector2(0, 0.5)
 [node name="Funguy" parent="." instance=ExtResource("2_vd5dh")]
 position = Vector2(172, 52)
 
-[node name="possessable_creature" parent="." instance=ExtResource("4_bafdu")]
-position = Vector2(206, 65)
-scale = Vector2(0.2, 0.2)
+[node name="grasshopper" parent="." instance=ExtResource("4_vvvuw")]
+position = Vector2(212, 71)
+scale = Vector2(0.1, 0.1)
+
+[node name="Block" parent="." instance=ExtResource("5_niyoj")]
+position = Vector2(148, 76)
