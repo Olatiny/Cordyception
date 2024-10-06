@@ -21,6 +21,8 @@ extends PossessableCreature
 
 var primary_used := false
 
+var unpossessed_post_kill := false
+
 
 ## Updating valid push boxes
 func _physics_process(delta: float) -> void:
@@ -78,5 +80,17 @@ func update_animation():
 
 ## When grasshopper lands after using big jump, kil
 func _on_land(body: Node2D) -> void:
-	if primary_used && velocity.y >= 0:
+	if !unpossessed_post_kill && primary_used && velocity.y >= 0:
 		unpossess(true)
+
+
+func unpossess(kill : bool, poison := false) -> void:	
+	controlled = false
+	if(kill || primary_used):
+		alive = false
+		unpossessed_post_kill = true
+	
+	var fun_dude := FUNGUY.instantiate() as FunGuy
+	fun_dude.global_position = global_position
+	fun_dude.velocity.y = -25.0
+	get_tree().root.call_deferred("add_child", fun_dude)
