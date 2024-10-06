@@ -326,4 +326,3 @@ scale = Vector2(0.1, 0.1)
 [node name="grasshopper" parent="." instance=ExtResource("4_vvvuw")]
 position = Vector2(72, 83)
 scale = Vector2(0.1, 0.1)
-big_jump_velocity = 1000
