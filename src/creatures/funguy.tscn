@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://y4hdlyp3rh48" path="res://assets/Cordyceps_Idle.png" id="2_dsuml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(18, 12)
+size = Vector2(7, 8)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qdhuy"]
-radius = 13.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pgplg"]
+radius = 4.0
+height = 16.0
 
 [node name="Funguy" type="CharacterBody2D"]
 collision_layer = 2
@@ -17,18 +18,20 @@ gravity = 150.0
 controlled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_422cx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dsuml")
+scale = Vector2(0.065, 0.13)
+texture = ExtResource("2_64nkj")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-9, 6)
+position = Vector2(-3.5, 8)
 target_position = Vector2(0, 1)
 collision_mask = 16
 
 [node name="GrassDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(9, 6)
+position = Vector2(3.5, 8)
 target_position = Vector2(0, 1)
 collision_mask = 16
 
@@ -37,5 +40,4 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="PossessShape" type="CollisionShape2D" parent="PossessArea"]
-shape = SubResource("CircleShape2D_qdhuy")
-disabled = true
+shape = SubResource("CapsuleShape2D_pgplg")

@@ -14,13 +14,14 @@ extends CharacterBody2D
 ## Whether an object is being controlled
 @export var controlled := false
 
+var physics_collisions : Array
 ## Number of times the secondary ability can be used
 @export var num_secondary_uses := 3
 
 ## The current direction we are facing
 var face_direction := Vector2.RIGHT
 
-
+## Max was hee
 ## Maximum number of times secondary can be used
 var _max_secondary_uses := num_secondary_uses
 
