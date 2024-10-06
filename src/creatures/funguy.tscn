@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_64nkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(16, 8)
+size = Vector2(14, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qdhuy"]
 radius = 16.0
@@ -24,12 +24,12 @@ scale = Vector2(0.125, 0.063)
 texture = ExtResource("2_64nkj")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-8, 4)
+position = Vector2(-7, 4)
 target_position = Vector2(0, 1)
 collision_mask = 16
 
 [node name="GrassDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(8, 4)
+position = Vector2(7, 4)
 target_position = Vector2(0, 1)
 collision_mask = 16
 
