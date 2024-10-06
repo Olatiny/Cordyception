@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
 func check_primary_action() -> void:
-	if(burrowing || !Input.is_action_just_pressed("primary_ability")):
+	if(burrowing || !Input.is_action_just_pressed("primary_ability") || !alive):
 		return
 	var tilemap
 	if dirt_raycast_top_left.is_colliding() && dirt_raycast_bottom_left.is_colliding() && velocity.x < 0:
@@ -111,14 +111,14 @@ func check_primary_action() -> void:
 			alive = false
 
 func check_secondary_action() -> void:
-	if(!burrowing && Input.is_action_just_pressed("secondary_ability")):
+	if(!burrowing && Input.is_action_just_pressed("secondary_ability") && alive):
 		print("secondary detected")
-		if dirt_raycast_top_left.is_colliding() || dirt_raycast_bottom_left && velocity.x < 0:
+		if (dirt_raycast_top_left.is_colliding() || dirt_raycast_bottom_left.is_colliding()) && velocity.x < 0:
 			heading = Vector2.LEFT
 			burrowing = true
 			velocity = Vector2.LEFT * dig_speed
 			print("left burrow")
-		elif dirt_raycast_top_right.is_colliding() || dirt_raycast_bottom_right && velocity.x > 0:
+		elif (dirt_raycast_top_right.is_colliding() || dirt_raycast_bottom_right.is_colliding()) && velocity.x > 0:
 			heading = Vector2.RIGHT
 			burrowing = true
 			velocity = Vector2.RIGHT * dig_speed
