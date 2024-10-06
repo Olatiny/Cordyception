@@ -11,6 +11,9 @@ var just_possessed := false
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
+	if !alive || !controlled:
+		velocity.x = move_toward(velocity.x, 0, 100 * delta)
+		
 	if just_possessed:
 		just_possessed = false
 
@@ -25,7 +28,7 @@ func try_possess() -> bool:
 	return false
 
 
-func unpossess(kill : bool) -> void:
+func unpossess(kill : bool, poison := false) -> void:
 	controlled = false
 	alive = !kill
 	

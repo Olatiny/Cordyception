@@ -71,5 +71,6 @@ func check_jump():
 func update_animation():
 	pass
 
+
 func check_unpossess():
 	pass

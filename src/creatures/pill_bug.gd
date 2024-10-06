@@ -28,13 +28,13 @@ var climb_shapes = []
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
-	if primary_used:
+	if primary_used && alive:
 		velocity.y = -ascend_velocity
 
 
 ## Grasshopper Big Jump
 func check_primary_action() -> void:
-	if not is_on_wall() || !Input.is_action_just_pressed("primary_ability"):
+	if !Input.is_action_just_pressed("primary_ability"):
 		return
 	
 	climb_shapes = wall_box.get_overlapping_bodies()
@@ -116,8 +116,11 @@ func _on_wall_box_body_exited(body: Node2D) -> void:
 		primary_used = false
 
 
-##
-func unpossess(kill : bool) -> void:
+## aqowduibq
+func unpossess(kill : bool, poison := false) -> void:
+	if !alive || poison && kill && my_state != STATE.BASE:
+		return
+	
 	controlled = false
 	alive = !kill
 	velocity.y = -25

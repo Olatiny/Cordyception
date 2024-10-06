@@ -121,3 +121,7 @@ func check_jump():
 		return
 	
 	velocity.y = -jump_velocity
+
+
+func kill():
+	my_state = STATE.SPLAT
