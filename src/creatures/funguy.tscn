@@ -13,6 +13,8 @@ radius = 7.07107
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_mojjp")
+jump_velocity = 60.0
+gravity = 150.0
 controlled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

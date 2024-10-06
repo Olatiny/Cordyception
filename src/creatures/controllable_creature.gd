@@ -15,6 +15,15 @@ extends CharacterBody2D
 @export var controlled := false
 
 var physics_collisions : Array
+## Number of times the secondary ability can be used
+@export var num_secondary_uses := 3
+
+## The current direction we are facing
+var face_direction := Vector2.RIGHT
+
+
+## Maximum number of times secondary can be used
+var _max_secondary_uses := num_secondary_uses
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +42,11 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.x = clampf(velocity.x, -terminal_velocity.x, terminal_velocity.x)
 	velocity.y = clampf(velocity.y, -terminal_velocity.y, terminal_velocity.y)
+	
+	if velocity.x < 0:
+		face_direction = Vector2.LEFT
+	elif velocity.x > 0:
+		face_direction = Vector2.RIGHT
 	
 	move_and_slide()
 

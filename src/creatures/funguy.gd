@@ -16,6 +16,9 @@ enum STATE {
 var my_state := STATE.SPORE_MODE
 
 
+## baby jump
+@export var jump_velocity := 100.0
+
 ## Total number of possessions the player can make
 @export var num_possessions := 5
 
@@ -119,4 +122,7 @@ func check_move():
 
 ## Overridden to do NOTHING (player CANNOT jump)
 func check_jump():
-	pass
+	if not is_on_floor() || !Input.is_action_just_pressed("jump"):
+		return
+	
+	velocity.y = -jump_velocity
