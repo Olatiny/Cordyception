@@ -9,7 +9,29 @@ extends PossessableCreature
 @export var big_jump_velocity := 450
 
 
+## area 2D for push secondary action
+@onready var push_box := $PushBox as Area2D
+
+## left facing collision shape for secondary action
+@onready var push_left_shape := $PushBox/CollisionShapeLeft
+
+## right facing action for secondary action
+@onready var push_right_shape := $PushBox/CollisionShapeRight
+
+
 var primary_used := false
+
+
+## Updating valid push boxes
+func _physics_process(delta: float) -> void:
+	if face_direction == Vector2.LEFT:
+		push_left_shape.disabled = true
+		push_right_shape.disabled = false
+	elif face_direction == Vector2.RIGHT:
+		push_left_shape.disabled = false
+		push_right_shape.disabled = true
+	
+	super(delta)
 
 
 ## Grasshopper Big Jump
@@ -23,7 +45,14 @@ func check_primary_action() -> void:
 
 ## Grasshopper Push Block
 func check_secondary_action() -> void:
-	pass
+	if !Input.is_action_just_pressed("secondary_ability"):
+		return
+	
+	var block_components = push_box.get_overlapping_areas()
+	
+	for block in block_components:
+		if block is Pushable:
+			block.activate()
 
 
 ## Movement controls
@@ -38,7 +67,7 @@ func check_move():
 
 ## Checks for jump
 func check_jump():
-	if (Input.is_action_just_pressed("jump")):
+	if is_on_floor() && (Input.is_action_just_pressed("jump")):
 		velocity.y = -small_jump_velocity
 
 

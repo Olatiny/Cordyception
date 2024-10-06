@@ -2,7 +2,7 @@ class_name Block
 extends CharacterBody2D
 
 
-@export var gravity := -400.0
+@export var gravity := -100.0
 
 
 func _physics_process(delta: float) -> void:
