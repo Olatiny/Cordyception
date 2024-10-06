@@ -50,6 +50,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("possess"):
 		possess()
 	
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()
+	
 	physics_collisions = possess_area.get_overlapping_bodies()
 	
 	super(delta)
