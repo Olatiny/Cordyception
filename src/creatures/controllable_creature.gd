@@ -14,6 +14,8 @@ extends CharacterBody2D
 ## Whether an object is being controlled
 @export var controlled := false
 
+var physics_collisions : Array
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

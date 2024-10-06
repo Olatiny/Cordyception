@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwbbe3il7y4x1"]
+
+[ext_resource type="PackedScene" uid="uid://bntq5gfrxuq2d" path="res://src/creatures/possessable_creature.tscn" id="1_yveib"]
+[ext_resource type="Script" path="res://src/creatures/worm_creature.gd" id="2_34118"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fnap"]
+size = Vector2(12.8, 12.8)
+
+[node name="worm_creature" instance=ExtResource("1_yveib")]
+script = ExtResource("2_34118")
+dig_speed = 100
+dig_turn_speed = 2
+dig_end_boost = 100
+destroy_end_boost = 150
+
+[node name="DirtDetectorDownLeft" type="RayCast2D" parent="." index="2"]
+position = Vector2(-64, 32)
+target_position = Vector2(-1, 0)
+
+[node name="DirtDetectorDownRight" type="RayCast2D" parent="." index="3"]
+position = Vector2(64, 32)
+target_position = Vector2(1, 0)
+
+[node name="DirtDetectorUpLeft" type="RayCast2D" parent="." index="4"]
+position = Vector2(-64, -32)
+target_position = Vector2(-1, 0)
+
+[node name="DirtDetectorUpRight" type="RayCast2D" parent="." index="5"]
+position = Vector2(64, -32)
+target_position = Vector2(1, 0)
+
+[node name="DirtDetectorDown" type="RayCast2D" parent="." index="6"]
+position = Vector2(0, 64)
+target_position = Vector2(0, 1)
+
+[node name="DirtCheckArea" type="Area2D" parent="." index="7"]
+scale = Vector2(10, 10)
+collision_layer = 0
+
+[node name="DirtCheckShape" type="CollisionShape2D" parent="DirtCheckArea" index="0"]
+position = Vector2(-9.08971e-07, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6fnap")

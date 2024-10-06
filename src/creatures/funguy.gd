@@ -47,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("possess"):
 		possess()
 	
+	physics_collisions = possess_area.get_overlapping_bodies()
+	
 	super(delta)
 
 
@@ -62,13 +64,13 @@ func update_state():
 			my_state = STATE.SPLAT
 	else:
 		my_state = STATE.IDLE
-
+	
 
 ## Handles bug possession
 func possess():
 	possess_shape.disabled = false
 	
-	var valid_bugs: Array[Node2D] = possess_area.get_overlapping_bodies()
+	var valid_bugs: Array[Node2D] = physics_collisions
 	valid_bugs.erase(self)
 	print("possess ",valid_bugs," ",valid_bugs.size())
 	
