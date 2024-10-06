@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_64nkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(14, 8)
+size = Vector2(14, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qdhuy"]
 radius = 16.0
@@ -17,6 +17,7 @@ gravity = 150.0
 controlled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_422cx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
