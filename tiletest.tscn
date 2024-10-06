@@ -1,7 +1,17 @@
 [gd_scene load_steps=5 format=4 uid="uid://cgj1i46j05itd"]
 
+<<<<<<< Updated upstream
 [ext_resource type="TileSet" uid="uid://barc1epbhx8a7" path="res://tileset.tres" id="1_mcxij"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="2_vd5dh"]
+=======
+[ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block.tscn" id="1_7hgf1"]
+[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_hffu4"]
+[ext_resource type="PackedScene" path="res://src/blocks/poison.tscn" id="1_lplvw"]
+[ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="2_0buje"]
+[ext_resource type="PackedScene" path="res://src/blocks/dirt_block.tscn" id="2_d2o7o"]
+[ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="2_vd5dh"]
+[ext_resource type="PackedScene" path="res://src/blocks/grass_block.tscn" id="3_f2yu6"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://bohfdkcnf15e0" path="res://src/creatures/grasshopper.tscn" id="4_vvvuw"]
 [ext_resource type="PackedScene" uid="uid://bqmmatkoh6y4v" path="res://src/creatures/pill_bug.tscn" id="8_vky6u"]
 
