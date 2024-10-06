@@ -64,10 +64,7 @@ func update_state():
 		return
 	
 	if grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
-		if not is_on_floor():
-			my_state = STATE.SPORE_MODE
-		else:
-			my_state = STATE.SPLAT
+		my_state = STATE.SPLAT
 	else:
 		my_state = STATE.IDLE
 	
