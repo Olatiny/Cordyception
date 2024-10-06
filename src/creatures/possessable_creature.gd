@@ -5,10 +5,21 @@ var alive := true
 
 const FUNGUY := preload("res://src/creatures/funguy.tscn")
 
+var just_possessed := false
+
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	
+	if just_possessed:
+		just_possessed = false
+
+
 
 func try_possess() -> bool:
 	if(alive):
 		controlled = true
+		just_possessed = true
 		return true
 		
 	return false
@@ -35,5 +46,5 @@ func check_move():
 
 
 func check_unpossess():
-	if(Input.is_action_just_pressed("possess")):
+	if !just_possessed && Input.is_action_just_pressed("possess"):
 		unpossess(false)
