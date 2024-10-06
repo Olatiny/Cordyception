@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dosgtptmb0811"]
 
 [ext_resource type="Script" path="res://src/creatures/funguy.gd" id="1_mojjp"]
-[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_64nkj"]
+[ext_resource type="Texture2D" uid="uid://y4hdlyp3rh48" path="res://assets/Cordyceps_Idle.png" id="2_dsuml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(14, 7)
+size = Vector2(18, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qdhuy"]
-radius = 16.0
+radius = 13.0
 
 [node name="Funguy" type="CharacterBody2D"]
 collision_layer = 2
@@ -17,20 +17,18 @@ gravity = 150.0
 controlled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_422cx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.063)
-texture = ExtResource("2_64nkj")
+texture = ExtResource("2_dsuml")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-7, 4)
+position = Vector2(-9, 6)
 target_position = Vector2(0, 1)
 collision_mask = 16
 
 [node name="GrassDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(7, 4)
+position = Vector2(9, 6)
 target_position = Vector2(0, 1)
 collision_mask = 16
 
