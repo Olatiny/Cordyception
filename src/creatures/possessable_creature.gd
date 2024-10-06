@@ -30,7 +30,8 @@ func try_possess() -> bool:
 
 func unpossess(kill : bool, poison := false) -> void:
 	controlled = false
-	alive = !kill
+	if(kill):
+		alive = false
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position
@@ -40,6 +41,8 @@ func unpossess(kill : bool, poison := false) -> void:
 
 ## Handles movement according to player's state
 func check_move():
+	if(!alive):
+		return
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	if direction:
