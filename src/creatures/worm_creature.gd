@@ -33,71 +33,80 @@ func check_primary_action() -> void:
 		return
 	var tilemap
 	if dirt_raycast_top_left.is_colliding() && dirt_raycast_bottom_left.is_colliding() && velocity.x < 0:
-		print("left burrow")
-		tilemap = dirt_raycast_top_left.get_collider()
+		print("left double burrow")
+		tilemap = get_tilemap(dirt_raycast_top_left)
 		var upper_tile = tilemap.local_to_map(dirt_raycast_top_left.get_collision_point() + Vector2.LEFT)
 		var lower_tile = tilemap.local_to_map(dirt_raycast_bottom_left.get_collision_point() + Vector2.LEFT)
-		
-		var new_pos = destroy_blocks_double(tilemap, upper_tile, lower_tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
+		var new_pos
+		if(upper_tile == lower_tile):
+			print("upper and lower the same")
+			new_pos = destroy_blocks_double(tilemap, tilemap.get_neighbor_cell(upper_tile, TileSet.CELL_NEIGHBOR_TOP_SIDE), upper_tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
+		else:
+			new_pos = destroy_blocks_double(tilemap, upper_tile, lower_tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
+			
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.LEFT * destroy_end_boost
 			alive = false
 	elif dirt_raycast_top_left.is_colliding() && velocity.x < 0:
 		print ("top left burrow")
-		tilemap = dirt_raycast_top_left.get_collider()
+		tilemap = get_tilemap(dirt_raycast_top_left)
 		var tile = tilemap.local_to_map(dirt_raycast_top_left.get_collision_point() + Vector2.LEFT)
-		var new_pos = destroy_blocks(tilemap, tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
+		var new_pos = destroy_blocks_double(tilemap, tile, tilemap.get_neighbor_cell(tile,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE), Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.LEFT * destroy_end_boost
 			alive = false
 	elif dirt_raycast_bottom_left.is_colliding() && velocity.x < 0:
 		print ("bottom left burrow")
-		tilemap = dirt_raycast_top_left.get_collider()
+		tilemap = get_tilemap(dirt_raycast_bottom_left)
 		var tile = tilemap.local_to_map(dirt_raycast_bottom_left.get_collision_point() + Vector2.LEFT)
-		var new_pos = destroy_blocks(tilemap, tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
+		var new_pos = destroy_blocks_double(tilemap, tilemap.get_neighbor_cell(tile,TileSet.CELL_NEIGHBOR_TOP_SIDE), tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_LEFT_SIDE)
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.LEFT * destroy_end_boost
 			alive = false
 	elif dirt_raycast_top_right.is_colliding() && dirt_raycast_bottom_right.is_colliding() && velocity.x > 0:
-		print("right burrow")
-		tilemap = dirt_raycast_top_right.get_collider()
-		var upper_tile = tilemap.local_to_map(dirt_raycast_top_right.get_collision_point() + Vector2.LEFT)
-		var lower_tile = tilemap.local_to_map(dirt_raycast_bottom_right.get_collision_point() + Vector2.LEFT)
-		
-		var new_pos = destroy_blocks_double(tilemap, upper_tile, lower_tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
+		print("right double burrow")
+		tilemap = get_tilemap(dirt_raycast_top_right)
+		var upper_tile = tilemap.local_to_map(dirt_raycast_top_right.get_collision_point() + Vector2.RIGHT)
+		var lower_tile = tilemap.local_to_map(dirt_raycast_bottom_right.get_collision_point() + Vector2.RIGHT)
+		var new_pos
+		if(upper_tile == lower_tile):
+			print("same top and bottom")
+			new_pos = destroy_blocks_double(tilemap, tilemap.get_neighbor_cell(upper_tile, TileSet.CELL_NEIGHBOR_TOP_SIDE), upper_tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
+		else:
+			new_pos = destroy_blocks_double(tilemap, upper_tile, lower_tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.RIGHT * destroy_end_boost
 			alive = false
 	elif dirt_raycast_top_right.is_colliding() && velocity.x > 0:
-		print("right burrow")
-		tilemap = dirt_raycast_top_right.get_collider()
+		print("top right burrow")
+		tilemap = get_tilemap(dirt_raycast_top_right)
 		var tile = tilemap.local_to_map(dirt_raycast_top_right.get_collision_point() + Vector2.RIGHT)
-		var new_pos = destroy_blocks(tilemap, tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
+		var new_pos = destroy_blocks_double(tilemap, tile, tilemap.get_neighbor_cell(tile,TileSet.CELL_NEIGHBOR_BOTTOM_SIDE), Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.RIGHT * destroy_end_boost
 			alive = false
 	elif dirt_raycast_bottom_right.is_colliding() && velocity.x > 0:
-		print("right burrow")
-		tilemap = dirt_raycast_bottom_right.get_collider()
+		print("bottom right burrow")
+		tilemap = get_tilemap(dirt_raycast_bottom_right)
 		var tile = tilemap.local_to_map(dirt_raycast_bottom_right.get_collision_point() + Vector2.RIGHT)
-		var new_pos = destroy_blocks(tilemap, tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
+		var new_pos = destroy_blocks_double(tilemap, tilemap.get_neighbor_cell(tile,TileSet.CELL_NEIGHBOR_TOP_SIDE), tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_RIGHT_SIDE)
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.RIGHT * destroy_end_boost
 			alive = false
 		
 	elif dirt_raycast_down.is_colliding() && can_dig_down:
 		print("down burrow")
-		tilemap = dirt_raycast_down.get_collider()
+		tilemap = get_tilemap(dirt_raycast_down.get_collider())
 		var tile = tilemap.local_to_map(dirt_raycast_down.get_collision_point() + Vector2.DOWN)
-		var new_pos = destroy_blocks(tilemap, tile, position, TileSet.CellNeighbor.CELL_NEIGHBOR_BOTTOM_SIDE)
+		var new_pos = destroy_blocks(tilemap, tile, Vector2(position), TileSet.CellNeighbor.CELL_NEIGHBOR_BOTTOM_SIDE)
 		if(new_pos != position):
-			position = new_pos
+			position.x = new_pos.x
 			velocity = Vector2.DOWN * destroy_end_boost
 			alive = false
 
@@ -161,8 +170,17 @@ func destroy_blocks( tilemap: TileMapLayer,  starting_tile_pos: Vector2i, real_p
 	var tile_data: TileData = tilemap.get_cell_tile_data(starting_tile_pos)
 	print("destroy blocks ", tile_data)
 	if(tile_data == null):
-		return real_pos
-	if(tile_data.get_custom_data("Is_Dirt")):
+		var block = check_special_block_raycast(tilemap.map_to_local(starting_tile_pos))
+		print(block)
+		if(block == null || !block.is_diggable):
+			print("tile wasn't dirt")
+			return real_pos
+		print("tile was dirt")
+		var new_real_pos = tilemap.map_to_local(starting_tile_pos)
+		new_real_pos = destroy_blocks(tilemap, tilemap.get_neighbor_cell(starting_tile_pos,direction), new_real_pos, direction)
+		tilemap.set_cell(starting_tile_pos)
+		return new_real_pos
+	elif(tile_data.get_custom_data("Is_Dirt")):
 		print("tile was dirt")
 		var new_real_pos = tilemap.map_to_local(starting_tile_pos)
 		new_real_pos = destroy_blocks(tilemap, tilemap.get_neighbor_cell(starting_tile_pos,direction), new_real_pos, direction)
@@ -171,29 +189,64 @@ func destroy_blocks( tilemap: TileMapLayer,  starting_tile_pos: Vector2i, real_p
 	else:
 		print("tile wasn't dirt")
 		return real_pos
-	
 
 func destroy_blocks_double( tilemap: TileMapLayer,  upper_tile_pos: Vector2i, lower_tile_pos: Vector2i, real_pos: Vector2, direction: TileSet.CellNeighbor) -> Vector2:
 	var upper_tile_data: TileData = tilemap.get_cell_tile_data(upper_tile_pos)
 	var lower_tile_data: TileData = tilemap.get_cell_tile_data(lower_tile_pos)
-	#print("destroy blocks ", tile_data)
-	if(upper_tile_data == null || lower_tile_data == null):
+	var upper_block: Block
+	var lower_block: Block
+	print("destroy blocks double ", upper_tile_data, " ", lower_tile_data, " ", upper_block, " ", lower_block)
+	if(upper_tile_data == null):
+		upper_block = check_special_block_raycast(tilemap.map_to_local(upper_tile_pos))
+	if(lower_tile_data == null):
+		lower_block = check_special_block_raycast(tilemap.map_to_local(lower_tile_pos))
+	var upper_dirt
+	if(upper_tile_data):
+		print("upper tile data check")
+		upper_dirt = upper_tile_data.get_custom_data("Is_Dirt")
+	var lower_dirt
+	if(lower_tile_data):
+		print("lower tile data check")
+		lower_dirt = lower_tile_data.get_custom_data("Is_Dirt")
+	if((upper_tile_data != null && upper_tile_data.get_custom_data("Block_Worm")) || (lower_tile_data != null && lower_tile_data.get_custom_data("Block_Worm")) || (upper_block != null && !upper_block.is_diggable) || (lower_block != null && !lower_block.is_diggable)):
+		print("not diggable")
 		return real_pos
-	
-	var upper_dirt = upper_tile_data.get_custom_data("Is_Dirt")
-	var lower_dirt = lower_tile_data.get_custom_data("Is_Dirt")
-	if(upper_tile_data.get_custom_data("Block_Worm") || lower_tile_data.get_custom_data("Block_Worm")):
-		return real_pos
-	elif(upper_dirt || lower_dirt):
-		print("atile was dirt")
-		var new_real_pos = (tilemap.map_to_local(upper_tile_pos) + tilemap.map_to_local(lower_tile_pos)) / 2
+	elif(upper_dirt || lower_dirt || (upper_block != null && upper_block.is_diggable) || (lower_block != null && lower_block.is_diggable)):
+		print("a tile was dirt")
+		var new_real_pos = Vector2(tilemap.map_to_local(lower_tile_pos).x, real_pos.y)
 		new_real_pos = destroy_blocks_double(tilemap, tilemap.get_neighbor_cell(upper_tile_pos,direction), tilemap.get_neighbor_cell(lower_tile_pos,direction), new_real_pos, direction)
 		if(upper_dirt):
 			tilemap.set_cell(upper_tile_pos)
 		if(lower_dirt):
 			tilemap.set_cell(lower_tile_pos)
+		if(upper_block != null):
+			upper_block.disable()
+			upper_block.queue_free()
+		if(lower_block != null):
+			lower_block.disable()
+			lower_block.queue_free()
 		return new_real_pos
 	else:
 		print("tile wasn't dirt")
 		return real_pos
-	
+
+func get_tilemap(raycast: RayCast2D) -> TileMapLayer:
+	var collider = raycast.get_collider()
+	if(collider == null):
+		return null
+	if(collider is TileMapLayer):
+		return collider
+	else:
+		return collider.get_parent()
+
+func check_special_block_raycast(block_pos) -> Block:
+	print("special blocks")
+	var space_state = get_world_2d().direct_space_state
+	# use global coordinates, not local to node
+	var query = PhysicsRayQueryParameters2D.create(block_pos, block_pos + Vector2.UP)
+	query.hit_from_inside = true
+	var result = space_state.intersect_ray(query)
+	print("query result ", result)
+	if(result && result.collider is Block):
+		return result.collider as Block
+	return null
