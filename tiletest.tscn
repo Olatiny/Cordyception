@@ -310,7 +310,6 @@ position = Vector2(160, 90)
 [node name="Funguy" parent="." instance=ExtResource("2_vd5dh")]
 position = Vector2(168, 52)
 jump_velocity = 80.0
-walk_speed = 30.0
 gravity = 350.0
 terminal_velocity = Vector2(75, 100)
 
