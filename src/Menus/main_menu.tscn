@@ -100,6 +100,7 @@ size_flags_vertical = 3
 script = ExtResource("1_srb4k")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,6 +130,7 @@ theme_override_font_sizes/font_size = 32
 text = "Cordyception"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
