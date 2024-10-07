@@ -8,7 +8,7 @@ radius = 7.0
 height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(7, 15)
+size = Vector2(7, 13)
 
 [sub_resource type="Animation" id="Animation_tg7qm"]
 length = 0.001

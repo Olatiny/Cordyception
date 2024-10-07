@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bjtp080hxt7e8" path="res://assets/environment/CortycepsPadding.png" id="2_k6jbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neekg"]
-size = Vector2(8, 8)
+size = Vector2(8, 13.75)
 
 [node name="Blorticepts" type="Node2D"]
+z_index = -1
 script = ExtResource("1_mcan3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,18 +16,20 @@ texture = ExtResource("1_k3vg4")
 hframes = 3
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 2
 position = Vector2(0, 8)
 texture = ExtResource("2_k6jbi")
 
 [node name="BIG" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BIG"]
+position = Vector2(0, -0.125)
 shape = SubResource("RectangleShape2D_neekg")
 
 [node name="MED" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -39,6 +42,7 @@ position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_neekg")
 
 [node name="SMOL" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

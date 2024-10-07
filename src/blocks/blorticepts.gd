@@ -13,6 +13,7 @@ var my_state := STATE.SHROOMNT
 
 @onready var areas: Array[Area2D] = [$SMOL as Area2D, $MED as Area2D, $BIG as Area2D]
 
+var time_elapsed := 0.0
 
 func _physics_process(delta: float) -> void:
 	var state_set = false
@@ -27,9 +28,17 @@ func _physics_process(delta: float) -> void:
 		idx -= 1
 	
 	if !state_set:
-		my_state = STATE.SHROOMNT
+		if time_elapsed > 0.1 && my_state != STATE.SHROOMNT:
+			time_elapsed = 0
+			my_state = (int(my_state) + 1) as STATE if my_state != STATE.SMOL else STATE.SHROOMNT
 	
 	update_animation()
+	
+	time_elapsed += delta
+	
+	# overflow check lmao
+	if time_elapsed < 0:
+		time_elapsed = 0
 
 
 func set_state(idx: int, guys: Array[Node2D]) -> bool:

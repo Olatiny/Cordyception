@@ -62,7 +62,12 @@ func update_state():
 	
 	if grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
 		my_state = STATE.SPLAT
-		modulate = Color.RED
+		modulate = Color(.2, .2, .2)
+		scale.y /= 2
+		
+		await get_tree().create_timer(1).timeout
+
+		TommyGameManager.reset_level(true)
 	else:
 		my_state = STATE.IDLE
 	
@@ -80,7 +85,11 @@ func possess():
 	var closest_bug = valid_bugs.front()
 	
 	for bug in valid_bugs:
-		if bug.position - position < closest_bug.position - position:
+		if !closest_bug.alive:
+			closest_bug = bug
+			continue
+		 
+		if bug.position - position < closest_bug.position - position && bug.alive:
 			closest_bug = bug
 	
 	print("closest bug ", closest_bug)

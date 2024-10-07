@@ -119,11 +119,12 @@ func unpossess(kill : bool, poison := false) -> void:
 	if(kill || primary_used):
 		alive = false
 		unpossessed_post_kill = true
-		$Sprite2D.modulate = Color(.2, .2, .2)
+		modulate = Color(.2, .2, .2)
+		scale.y = -1
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
-	fun_dude.global_position = global_position
-	fun_dude.velocity.y = -25.0
+	fun_dude.global_position = global_position + Vector2(0, -4)
+	fun_dude.velocity.y = -fun_dude.jump_velocity
 	get_parent().call_deferred("add_child", fun_dude)
 
 

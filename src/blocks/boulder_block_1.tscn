@@ -11,7 +11,6 @@ size = Vector2(5.5, 7)
 size = Vector2(23, 16)
 
 [node name="BoulderBlock1" instance=ExtResource("1_rsria")]
-collision_layer = 16
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1.5, 1)

@@ -177,9 +177,10 @@ func unpossess(kill : bool, poison := false) -> void:
 	controlled = false
 	if (kill):
 		alive = false
-		$Sprite2D.modulate = Color(.2, .2, .2)
+		modulate = Color(.2, .2, .2)
+		scale.y = -1
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
-	fun_dude.global_position = global_position
-	fun_dude.velocity.y = -ascend_velocity if primary_used else -25.0
+	fun_dude.global_position = global_position + Vector2(0, -4)
+	fun_dude.velocity.y = -ascend_velocity if primary_used else -fun_dude.jump_velocity
 	get_tree().root.call_deferred("add_child", fun_dude)

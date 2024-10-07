@@ -13,7 +13,9 @@ func _physics_process(delta: float) -> void:
 	
 	if !alive || !controlled:
 		velocity.x = move_toward(velocity.x, 0, 100 * delta)
-		
+	
+	$Possess.visible = controlled || !alive
+	
 	if just_possessed:
 		just_possessed = false
 
@@ -32,11 +34,12 @@ func unpossess(kill : bool, poison := false) -> void:
 	controlled = false
 	if(kill):
 		alive = false
-		$Sprite2D.self_modulate = Color(.2, .2, .2)
+		modulate = Color(.2, .2, .2)
+		scale.y = -1
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
-	fun_dude.global_position = global_position
-	fun_dude.velocity.y = -25.0
+	fun_dude.global_position = global_position + Vector2(0, -4)
+	fun_dude.velocity.y = -fun_dude.jump_velocity
 	get_parent().call_deferred("add_child", fun_dude)
 
 

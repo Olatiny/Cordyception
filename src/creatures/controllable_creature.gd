@@ -38,6 +38,10 @@ func _physics_process(delta: float) -> void:
 		check_primary_action()
 		check_secondary_action()
 		check_unpossess()
+		TommyGameManager.controls_indicators.update_ui(self)
+		
+		if TommyGameManager.current_player_entity != self:
+			TommyGameManager.current_player_entity = self
 	
 	update_animation()
 	

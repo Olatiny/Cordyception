@@ -13,17 +13,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func _pause():
 	visible = true
 	resume_button.grab_focus()
-	
+
 
 func _next():
 	visible = false
 	get_tree().change_scene_to_file(next_level_name)
 
+
 func _restart():
 	pass
+
 
 func _main_menu():
 	get_tree().change_scene_to_file("res://src/Menus/main_menu.tscn")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg571y5enpwg1"]
+
+[ext_resource type="Texture2D" uid="uid://d1fg5r66nigxd" path="res://assets/environment/Small Witch Hut.png" id="1_8nmvb"]
+[ext_resource type="Script" path="res://src/you_are_winner!.gd" id="1_41q1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_islub"]
+
+[node name="YouAreWinner!" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_41q1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8nmvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_islub")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

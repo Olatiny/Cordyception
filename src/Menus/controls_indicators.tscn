@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw64nkiasaerf"]
+
+[ext_resource type="Script" path="res://src/controls_indicators.gd" id="1_cls0d"]
+[ext_resource type="FontFile" uid="uid://cnw6mdsr7r60" path="res://assets/temp/GrapeSoda.ttf" id="2_p4v3k"]
+[ext_resource type="Texture2D" uid="uid://crh7s062y8e0t" path="res://assets/temp/space_icon.png" id="3_mjrw2"]
+[ext_resource type="Texture2D" uid="uid://biyo0tj8jo4hx" path="res://assets/temp/R_icon.png" id="4_b1e11"]
+[ext_resource type="Texture2D" uid="uid://dhbugo726ou64" path="res://assets/temp/shift_icon.png" id="5_sma51"]
+[ext_resource type="Texture2D" uid="uid://c17up0or7qxv6" path="res://assets/temp/x_icon.png" id="6_dm302"]
+[ext_resource type="Texture2D" uid="uid://wyqu1ermeeod" path="res://assets/temp/c_icon.png" id="7_7xtq2"]
+
+[node name="ControlsIndicators" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cls0d")
+
+[node name="BR" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="BR"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_p4v3k")
+theme_override_font_sizes/font_size = 16
+text = "Jump"
+
+[node name="CenterContainer" type="CenterContainer" parent="BR"]
+layout_mode = 2
+
+[node name="Space Icon" type="TextureRect" parent="BR/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_mjrw2")
+
+[node name="BM" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="BM"]
+layout_mode = 2
+
+[node name="R Icon" type="TextureRect" parent="BM/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_b1e11")
+
+[node name="Label" type="Label" parent="BM"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_p4v3k")
+theme_override_font_sizes/font_size = 16
+text = "Reset"
+
+[node name="BL" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 16.0
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="BL"]
+layout_mode = 2
+
+[node name="Shift Icon" type="TextureRect" parent="BL/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_sma51")
+
+[node name="Label" type="Label" parent="BL"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_p4v3k")
+theme_override_font_sizes/font_size = 16
+text = "Possess"
+
+[node name="Primary" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Primary"]
+layout_mode = 2
+
+[node name="X Icon" type="TextureRect" parent="Primary/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("6_dm302")
+
+[node name="Label" type="Label" parent="Primary"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_p4v3k")
+theme_override_font_sizes/font_size = 16
+text = "Primary"
+
+[node name="Secondary" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.0
+offset_bottom = 16.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Secondary"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_p4v3k")
+theme_override_font_sizes/font_size = 16
+text = "Secondary"
+
+[node name="CenterContainer" type="CenterContainer" parent="Secondary"]
+layout_mode = 2
+
+[node name="C Icon" type="TextureRect" parent="Secondary/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("7_7xtq2")

@@ -20,23 +20,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func StartGame():
 	LoadLevel(level_one_name)
-	
+
+
 func LoadLevel(level: String):
 	print("load level ", level)
 	#load(level)
 	get_tree().change_scene_to_file(level)
+
 
 func OpenMainMenu():
 	main_menu_screen.visible = true
 	level_select_screen.visible = false
 	start_button.grab_focus()
 
+
 func OpenLevelSelect():
 	main_menu_screen.visible = false
 	level_select_screen.visible = true
 	level_one_button.grab_focus()
+
 
 func Quit():
 	get_tree().quit()

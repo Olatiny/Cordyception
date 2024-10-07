@@ -1,6 +1,23 @@
 extends PossessableCreature
 class_name WormCreature
 
+
+enum STATE {
+	IDLE,
+	WALK,
+	DIG,
+	DESTROY
+}
+
+var my_state := STATE.IDLE
+
+var ANIM_DICT = {
+	STATE.IDLE: "idle",
+	STATE.WALK: "walk",
+	STATE.DIG: "dig",
+	STATE.DESTROY: "walk"
+}
+
 @export var dig_speed := 100
 @export var dig_turn_speed := 2
 @export var dig_end_boost := 100
@@ -12,6 +29,7 @@ var started_burrowing_this_frame := false
 var heading := Vector2.DOWN
 var dirt_tile_map: TileMapLayer
 var stone_tile_map: TileMapLayer
+var primary_used := false
 
 @onready var dirt_raycast_top_left := $DirtDetectorUpLeft as RayCast2D
 @onready var dirt_raycast_top_right := $DirtDetectorUpRight as RayCast2D
@@ -22,17 +40,55 @@ var stone_tile_map: TileMapLayer
 @onready var walk_collision := $CollisionShape2D as CollisionShape2D
 @onready var dirt_check_area := $DirtCheckArea as Area2D
 
+@onready var animation_player := $AnimationPlayer as AnimationPlayer
+
+
 func check_jump():
 	pass
+
 
 func _ready() -> void:
 	dirt_tile_map = get_parent()._dirt_tilemap
 	stone_tile_map = get_parent()._stone_tilemap
 
+
 func _physics_process(delta: float) -> void:
 	if(burrowing):
 		physics_collisions = dirt_check_area.get_overlapping_bodies()
-	super._physics_process(delta)
+	
+	@warning_ignore("redundant_await")
+	await update_state()
+	
+	super(delta)
+
+
+func update_state():
+	if started_burrowing_this_frame:
+		var temp := position
+		animation_player.play("dig_anticip_" + ("L" if face_direction.x < 0 else "R"))
+		await animation_player.animation_finished
+		position = temp
+		my_state = STATE.DIG
+	elif burrowing:
+		my_state = STATE.DIG
+	elif velocity != Vector2.ZERO && is_on_floor():
+		my_state = STATE.WALK
+	else:
+		my_state = STATE.IDLE
+
+
+func update_animation(reset := false):
+	var anim_name = ANIM_DICT[my_state]
+	
+	if anim_name != "dig":
+		anim_name += "_L" if face_direction.x < 0 else "_R"
+	
+	if !burrowing && animation_player.current_animation == "dig":
+		anim_name = "dig_reset"
+	
+	if animation_player.current_animation != anim_name:
+		animation_player.play(anim_name)
+
 
 func check_primary_action() -> void:
 	if(burrowing || !Input.is_action_just_pressed("primary_ability") || !alive):
@@ -107,6 +163,11 @@ func check_primary_action() -> void:
 			position.x = new_pos.x
 			velocity = Vector2.DOWN * destroy_end_boost
 			alive = false
+	
+	primary_used = true
+	unpossess(true)
+	dirt_tile_map.set_cells_terrain_connect(dirt_tile_map.get_used_cells(), 0, 0)
+
 
 func check_secondary_action() -> void:
 	if(!burrowing && Input.is_action_just_pressed("secondary_ability") && alive):
@@ -134,9 +195,11 @@ func check_secondary_action() -> void:
 			print("start burrowing ", collision_mask)
 			##walk_collision.disabled = true
 
+
 func check_unpossess():
 	if(!burrowing):
-		super.check_unpossess()
+		super()
+
 
 func check_move():
 	if(burrowing):
@@ -167,7 +230,8 @@ func check_move():
 		velocity = heading * dig_speed
 	
 	elif(is_on_floor()):
-		super.check_move()
+		super()
+
 
 func destroy_blocks( tilemap: TileMapLayer,  starting_tile_pos: Vector2i, real_pos: Vector2, direction: TileSet.CellNeighbor) -> Vector2:
 	var tile_data: TileData = tilemap.get_cell_tile_data(starting_tile_pos)
@@ -192,6 +256,7 @@ func destroy_blocks( tilemap: TileMapLayer,  starting_tile_pos: Vector2i, real_p
 	else:
 		print("tile wasn't dirt")
 		return real_pos
+
 
 func destroy_blocks_double( upper_tile_pos: Vector2i, lower_tile_pos: Vector2i, real_pos: Vector2, direction: TileSet.CellNeighbor) -> Vector2:
 	var upper_dirt_tile_data: TileData = dirt_tile_map.get_cell_tile_data(upper_tile_pos)
@@ -237,6 +302,7 @@ func destroy_blocks_double( upper_tile_pos: Vector2i, lower_tile_pos: Vector2i, 
 		print("tile wasn't dirt")
 		return real_pos
 
+
 func get_tilemap(raycast: RayCast2D) -> TileMapLayer:
 	var collider = raycast.get_collider()
 	if(collider == null):
@@ -245,6 +311,7 @@ func get_tilemap(raycast: RayCast2D) -> TileMapLayer:
 		return collider
 	else:
 		return collider.get_parent()
+
 
 func check_special_block_raycast(block_pos) -> Block:
 	print("special blocks")
