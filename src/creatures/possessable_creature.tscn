@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_1vvi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
+resource_local_to_scene = true
 size = Vector2(128, 128)
 
 [node name="possessable_creature" type="CharacterBody2D"]
