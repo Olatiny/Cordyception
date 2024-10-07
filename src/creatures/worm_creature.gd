@@ -170,7 +170,6 @@ func check_primary_action() -> void:
 		primary_used = true
 		AudioManager.play_sfx(BREAK_SOUND)
 		unpossess(true)
-		dirt_tile_map.set_cells_terrain_connect(dirt_tile_map.get_used_cells(), 0, 0)
 
 
 func check_secondary_action() -> void:
