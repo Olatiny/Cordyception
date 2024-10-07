@@ -123,7 +123,7 @@ func unpossess(kill : bool, poison := false) -> void:
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position
 	fun_dude.velocity.y = -25.0
-	get_tree().root.call_deferred("add_child", fun_dude)
+	get_parent().call_deferred("add_child", fun_dude)
 
 
 func update_animation(restart := false):
