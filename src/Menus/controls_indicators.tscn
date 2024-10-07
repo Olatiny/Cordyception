@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://src/controls_indicators.gd" id="1_cls0d"]
 [ext_resource type="FontFile" uid="uid://cnw6mdsr7r60" path="res://assets/temp/GrapeSoda.ttf" id="2_p4v3k"]
-[ext_resource type="Texture2D" uid="uid://crh7s062y8e0t" path="res://assets/temp/space_icon.png" id="3_mjrw2"]
-[ext_resource type="Texture2D" uid="uid://biyo0tj8jo4hx" path="res://assets/temp/R_icon.png" id="4_b1e11"]
-[ext_resource type="Texture2D" uid="uid://dhbugo726ou64" path="res://assets/temp/shift_icon.png" id="5_sma51"]
-[ext_resource type="Texture2D" uid="uid://c17up0or7qxv6" path="res://assets/temp/x_icon.png" id="6_dm302"]
-[ext_resource type="Texture2D" uid="uid://wyqu1ermeeod" path="res://assets/temp/c_icon.png" id="7_7xtq2"]
+[ext_resource type="Texture2D" uid="uid://crh7s062y8e0t" path="res://assets/ui/space_icon.png" id="3_mjrw2"]
+[ext_resource type="Texture2D" uid="uid://biyo0tj8jo4hx" path="res://assets/ui/R_icon.png" id="4_b1e11"]
+[ext_resource type="Texture2D" uid="uid://dhbugo726ou64" path="res://assets/ui/shift_icon.png" id="5_sma51"]
+[ext_resource type="Texture2D" uid="uid://c17up0or7qxv6" path="res://assets/ui/x_icon.png" id="6_dm302"]
+[ext_resource type="Texture2D" uid="uid://wyqu1ermeeod" path="res://assets/ui/c_icon.png" id="7_7xtq2"]
 
 [node name="ControlsIndicators" type="Control"]
 layout_mode = 3

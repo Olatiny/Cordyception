@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crh7s062y8e0t"
-path="res://.godot/imported/space_icon.png-7d5e83f5c63f5c9a23d9a430bb59e928.ctex"
+uid="uid://dhbugo726ou64"
+path="res://.godot/imported/shift_icon.png-61a72574eba50e44cee9740931d6707f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/space_icon.png"
-dest_files=["res://.godot/imported/space_icon.png-7d5e83f5c63f5c9a23d9a430bb59e928.ctex"]
+source_file="res://assets/ui/shift_icon.png"
+dest_files=["res://.godot/imported/shift_icon.png-61a72574eba50e44cee9740931d6707f.ctex"]
 
 [params]
 
