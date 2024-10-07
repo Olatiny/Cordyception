@@ -63,7 +63,7 @@ func update_state():
 	if my_state == STATE.POSSESSING:
 		return
 	
-	if grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
+	if is_on_floor() && grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
 		kill()
 	else:
 		my_state = STATE.IDLE

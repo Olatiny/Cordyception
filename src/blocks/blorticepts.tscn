@@ -8,7 +8,7 @@
 size = Vector2(8, 13.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q27pp"]
-size = Vector2(6, 5)
+size = Vector2(6, 4)
 
 [node name="Blorticepts" type="CharacterBody2D"]
 z_index = -1
@@ -60,5 +60,5 @@ position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_neekg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_q27pp")
