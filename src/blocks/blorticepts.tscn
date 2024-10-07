@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://botlwwxjb5b6x"]
+
+[ext_resource type="Texture2D" uid="uid://cjqy160t6fosd" path="res://assets/environment/Cortyceps.png" id="1_k3vg4"]
+[ext_resource type="Script" path="res://src/blocks/blorticepts.gd" id="1_mcan3"]
+[ext_resource type="Texture2D" uid="uid://bjtp080hxt7e8" path="res://assets/environment/CortycepsPadding.png" id="2_k6jbi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neekg"]
+size = Vector2(8, 8)
+
+[node name="Blorticepts" type="Node2D"]
+script = ExtResource("1_mcan3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k3vg4")
+hframes = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, 8)
+texture = ExtResource("2_k6jbi")
+
+[node name="BIG" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BIG"]
+shape = SubResource("RectangleShape2D_neekg")
+
+[node name="MED" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MED"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_neekg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MED"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_neekg")
+
+[node name="SMOL" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SMOL"]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_neekg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SMOL"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_neekg")

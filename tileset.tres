@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://barc1epbhx8a7"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://barc1epbhx8a7"]
 
 [ext_resource type="PackedScene" uid="uid://dy7nifjggekb4" path="res://src/blocks/poison.tscn" id="1_bb1ip"]
 [ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block_1.tscn" id="2_e46wd"]
 [ext_resource type="PackedScene" uid="uid://b7mft4fr1ldx1" path="res://src/blocks/dirt_block.tscn" id="3_yrhx5"]
 [ext_resource type="PackedScene" uid="uid://dmlabbdllf11i" path="res://src/blocks/grass_block.tscn" id="4_lmwf7"]
+[ext_resource type="PackedScene" uid="uid://botlwwxjb5b6x" path="res://src/blocks/blorticepts.tscn" id="5_1uixx"]
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="5_q25hj"]
 [ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="6_sg36q"]
 [ext_resource type="Texture2D" uid="uid://b7wfemmw13vvw" path="res://assets/environment/Auto Tile Sprite Sheet.png" id="7_0cylm"]
@@ -14,6 +15,7 @@ scenes/1/scene = ExtResource("1_bb1ip")
 scenes/2/scene = ExtResource("2_e46wd")
 scenes/3/scene = ExtResource("3_yrhx5")
 scenes/4/scene = ExtResource("4_lmwf7")
+scenes/5/scene = ExtResource("5_1uixx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cao6j"]
 texture = ExtResource("5_q25hj")
