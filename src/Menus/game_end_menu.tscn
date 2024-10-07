@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://0pl50sk2koof"]
+[gd_scene load_steps=37 format=3 uid="uid://0pl50sk2koof"]
 
 [ext_resource type="Script" path="res://src/Menus/game_end_menu.gd" id="1_jwe0y"]
 [ext_resource type="Texture2D" uid="uid://cll1poahstv1g" path="res://assets/environment/Witch Hut.png" id="3_vkp03"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://ib20j5ft6qku" path="res://assets/environment/Fungus 2.png" id="9_qwoty"]
 [ext_resource type="Texture2D" uid="uid://diqx4jmn1ihhv" path="res://assets/environment/Fungus 1.png" id="10_o4n0k"]
 [ext_resource type="Texture2D" uid="uid://bd7xvumabrvgo" path="res://assets/environment/Mushroom 4.png" id="11_05s1l"]
+[ext_resource type="Texture2D" uid="uid://c0kbei5cnspew" path="res://assets/ui/blank_btn_wide1.png" id="12_cjm36"]
+[ext_resource type="Texture2D" uid="uid://57b484lmwofc" path="res://assets/ui/blank_btn_wide3.png" id="13_ri804"]
+[ext_resource type="Texture2D" uid="uid://wcbq35etmiia" path="res://assets/ui/blank_btn_wide2.png" id="14_pqreu"]
+[ext_resource type="Texture2D" uid="uid://bsjdlysty8c8d" path="res://assets/ui/blank_btn_thin1.png" id="15_ss62d"]
+[ext_resource type="Texture2D" uid="uid://bd701kuyysegq" path="res://assets/ui/blank_btn_thin3.png" id="16_47p5m"]
+[ext_resource type="Texture2D" uid="uid://brgeptv8wecke" path="res://assets/ui/blank_btn_thin2.png" id="17_citxd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3toh"]
 atlas = ExtResource("4_65l2h")
@@ -148,8 +154,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_teslm"]
-
 [node name="GameEndMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -277,19 +281,64 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Restart" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_teslm")
-text = "Restart"
+texture_normal = ExtResource("12_cjm36")
+texture_pressed = ExtResource("13_ri804")
+texture_hover = ExtResource("14_pqreu")
+texture_disabled = ExtResource("13_ri804")
+texture_focused = ExtResource("14_pqreu")
+stretch_mode = 0
 
-[node name="Menu" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/Restart"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -8.0
+offset_right = 24.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Restart/CenterContainer"]
+layout_direction = 3
 layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.0745098, 0.258824, 1)
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_teslm")
-text = "Menu"
+texture_normal = ExtResource("15_ss62d")
+texture_pressed = ExtResource("16_47p5m")
+texture_hover = ExtResource("17_citxd")
+texture_disabled = ExtResource("16_47p5m")
+texture_focused = ExtResource("17_citxd")
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Menu/CenterContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.0745098, 0.258824, 1)
+text = "Main"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Restart" to="." method="_restart"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Menu" to="." method="_main_menu"]

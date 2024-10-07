@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bmy1hldxwv88y"]
+[gd_scene load_steps=30 format=3 uid="uid://bmy1hldxwv88y"]
 
 [ext_resource type="Script" path="res://src/Menus/main_menu.gd" id="1_srb4k"]
 [ext_resource type="Texture2D" uid="uid://cll1poahstv1g" path="res://assets/environment/Witch Hut.png" id="3_04lfy"]
 [ext_resource type="Texture2D" uid="uid://c8gubf6aexvuj" path="res://assets/environment/Background Layers/Back Layer BG.png" id="3_rs408"]
+[ext_resource type="Texture2D" uid="uid://catkb7twl3yae" path="res://assets/Title Card.png" id="3_twbp8"]
 [ext_resource type="Texture2D" uid="uid://cnw4128xknuaw" path="res://assets/environment/Mushroom 2.png" id="3_uoqxy"]
 [ext_resource type="FontFile" uid="uid://cnw6mdsr7r60" path="res://assets/temp/GrapeSoda.ttf" id="3_vpkc1"]
 [ext_resource type="Texture2D" uid="uid://bl8ls8huslpmi" path="res://assets/environment/Mushroom 3.png" id="4_5bway"]
@@ -12,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cod2a7nivtwd7" path="res://assets/characters/Witch.png" id="9_edvmp"]
 [ext_resource type="Texture2D" uid="uid://dlvmrjxj4h6el" path="res://assets/characters/Roller.png" id="9_tt44s"]
 [ext_resource type="Texture2D" uid="uid://bd7xvumabrvgo" path="res://assets/environment/Mushroom 4.png" id="10_w0hor"]
+[ext_resource type="Texture2D" uid="uid://cxh8xjinsnjmq" path="res://assets/ui/blank_btn1.png" id="13_nym8j"]
+[ext_resource type="Texture2D" uid="uid://bcxg0dbnvkdc6" path="res://assets/ui/blank_btn3.png" id="14_jn6j5"]
+[ext_resource type="Texture2D" uid="uid://bkvtkmuv5gkwy" path="res://assets/ui/blank_btn2.png" id="14_w3awr"]
+[ext_resource type="Texture2D" uid="uid://bsjdlysty8c8d" path="res://assets/ui/blank_btn_thin1.png" id="16_2xmcm"]
+[ext_resource type="Texture2D" uid="uid://bd701kuyysegq" path="res://assets/ui/blank_btn_thin3.png" id="17_yiiri"]
+[ext_resource type="Texture2D" uid="uid://brgeptv8wecke" path="res://assets/ui/blank_btn_thin2.png" id="18_qlrrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3toh"]
 atlas = ExtResource("9_edvmp")
@@ -85,8 +92,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bkk2u"]
-
 [node name="MainMenu" type="Control"]
 clip_contents = true
 layout_mode = 3
@@ -118,16 +123,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MainScreen"]
+[node name="TextureRect" type="TextureRect" parent="MainScreen"]
 layout_mode = 1
-offset_left = 15.0
-offset_top = 15.0
-offset_right = 170.0
-offset_bottom = 39.0
-theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 32
-text = "Cordyception"
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 180.0
+grow_horizontal = 2
+texture = ExtResource("3_twbp8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainScreen"]
 visible = false
@@ -200,37 +205,97 @@ texture = ExtResource("10_w0hor")
 
 [node name="MainMenuOptions" type="VBoxContainer" parent="MainScreen"]
 layout_mode = 1
-offset_left = 15.0
-offset_top = 50.0
-offset_right = 70.0
-offset_bottom = 130.0
+anchors_preset = -1
+anchor_top = 0.627778
+anchor_bottom = 0.627778
+offset_left = 39.0
+offset_top = -40.0
+offset_right = 94.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
 
-[node name="Start" type="Button" parent="MainScreen/MainMenuOptions"]
+[node name="Start" type="TextureButton" parent="MainScreen/MainMenuOptions"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
-text = "Start"
-alignment = 0
+texture_normal = ExtResource("13_nym8j")
+texture_pressed = ExtResource("14_jn6j5")
+texture_hover = ExtResource("14_w3awr")
+texture_disabled = ExtResource("14_jn6j5")
+texture_focused = ExtResource("14_w3awr")
 
-[node name="Credits" type="Button" parent="MainScreen/MainMenuOptions"]
+[node name="CenterContainer" type="CenterContainer" parent="MainScreen/MainMenuOptions/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainScreen/MainMenuOptions/Start/CenterContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.419608, 0.0745098, 0.258824, 1)
+text = "Start!"
+
+[node name="Credits" type="TextureButton" parent="MainScreen/MainMenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
+texture_normal = ExtResource("13_nym8j")
+texture_pressed = ExtResource("14_jn6j5")
+texture_hover = ExtResource("14_w3awr")
+texture_disabled = ExtResource("14_jn6j5")
+texture_focused = ExtResource("14_w3awr")
+
+[node name="CenterContainer" type="CenterContainer" parent="MainScreen/MainMenuOptions/Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -8.0
+offset_right = 23.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainScreen/MainMenuOptions/Credits/CenterContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.0745098, 0.258824, 1)
 text = "Credits"
-alignment = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Quit" type="Button" parent="MainScreen/MainMenuOptions"]
+[node name="Quit" type="TextureButton" parent="MainScreen/MainMenuOptions"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
+texture_normal = ExtResource("16_2xmcm")
+texture_pressed = ExtResource("17_yiiri")
+texture_hover = ExtResource("18_qlrrk")
+texture_disabled = ExtResource("17_yiiri")
+texture_focused = ExtResource("18_qlrrk")
+
+[node name="CenterContainer" type="CenterContainer" parent="MainScreen/MainMenuOptions/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainScreen/MainMenuOptions/Quit/CenterContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.0745098, 0.258824, 1)
 text = "Quit"
-alignment = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CreditsScreen" type="Control" parent="."]
 visible = false
@@ -250,6 +315,7 @@ offset_left = -49.0
 offset_right = 49.0
 offset_bottom = 147.0
 grow_horizontal = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="CreditsScreen/HBoxContainer"]
 layout_mode = 2
@@ -280,10 +346,31 @@ Lainey Harding:  [color=#AAAAAA] Art, Design [/color]
 fit_content = true
 autowrap_mode = 0
 
-[node name="Main" type="Button" parent="CreditsScreen/HBoxContainer"]
+[node name="Main" type="TextureButton" parent="CreditsScreen/HBoxContainer"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("13_nym8j")
+texture_pressed = ExtResource("14_jn6j5")
+texture_hover = ExtResource("14_w3awr")
+texture_disabled = ExtResource("14_jn6j5")
+texture_focused = ExtResource("14_w3awr")
+
+[node name="CenterContainer" type="CenterContainer" parent="CreditsScreen/HBoxContainer/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditsScreen/HBoxContainer/Main/CenterContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.0745098, 0.258824, 1)
 text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MainScreen/MainMenuOptions/Start" to="." method="StartGame"]
 [connection signal="pressed" from="MainScreen/MainMenuOptions/Credits" to="." method="OpenCredits"]

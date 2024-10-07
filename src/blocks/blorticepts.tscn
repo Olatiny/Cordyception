@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://botlwwxjb5b6x"]
+[gd_scene load_steps=6 format=3 uid="uid://botlwwxjb5b6x"]
 
 [ext_resource type="Texture2D" uid="uid://cjqy160t6fosd" path="res://assets/environment/Cortyceps.png" id="1_k3vg4"]
 [ext_resource type="Script" path="res://src/blocks/blorticepts.gd" id="1_mcan3"]
@@ -7,8 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neekg"]
 size = Vector2(8, 13.75)
 
-[node name="Blorticepts" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q27pp"]
+size = Vector2(6, 5)
+
+[node name="Blorticepts" type="CharacterBody2D"]
 z_index = -1
+collision_layer = 4
+collision_mask = 17
 script = ExtResource("1_mcan3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -53,3 +58,7 @@ shape = SubResource("RectangleShape2D_neekg")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SMOL"]
 position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_neekg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_q27pp")

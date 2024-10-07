@@ -1,5 +1,5 @@
 class_name Blorticepts
-extends Node2D
+extends CharacterBody2D
 
 
 enum STATE {
@@ -16,6 +16,11 @@ var my_state := STATE.SHROOMNT
 var time_elapsed := 0.0
 
 func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += 950 * delta
+		move_and_slide()
+	
 	var state_set = false
 	
 	var idx = 2
