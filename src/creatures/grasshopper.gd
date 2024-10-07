@@ -2,6 +2,8 @@ class_name Grasshopper
 extends PossessableCreature
 
 
+const BIG_JUMP_SOUND := preload("res://assets/Audio/big_jump.wav")
+
 enum STATE {
 	IDLE,
 	PUSH,
@@ -75,6 +77,7 @@ func check_primary_action() -> void:
 	
 	velocity.y = -big_jump_velocity
 	primary_used = true
+	AudioManager.play_sfx(BIG_JUMP_SOUND, 0.02)
 
 
 ## Grasshopper Push Block
@@ -106,6 +109,7 @@ func check_jump():
 	if is_on_floor() && (Input.is_action_just_pressed("jump")):
 		velocity.y = -small_jump_velocity
 		my_state = STATE.JUMP
+		AudioManager.play_sfx(JUMP_SOUND, 0.02)
 
 
 ## When grasshopper lands after using big jump, kil
@@ -117,6 +121,7 @@ func _on_land(body: Node2D) -> void:
 func unpossess(kill : bool, poison := false) -> void:	
 	controlled = false
 	if(kill || primary_used):
+		AudioManager.play_sfx(KILL_SOUND)
 		alive = false
 		unpossessed_post_kill = true
 		modulate = Color(.2, .2, .2)

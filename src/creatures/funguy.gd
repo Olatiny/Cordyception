@@ -65,6 +65,8 @@ func update_state():
 		modulate = Color(.2, .2, .2)
 		scale.y /= 2
 		
+		AudioManager.play_sfx(KILL_SOUND)
+		
 		await get_tree().create_timer(1).timeout
 
 		TommyGameManager.reset_level(true)
@@ -126,6 +128,8 @@ func check_move():
 func check_jump():
 	if not is_on_floor() || !Input.is_action_just_pressed("jump"):
 		return
+	
+	AudioManager.play_sfx(JUMP_SOUND, 0.02)
 	
 	velocity.y = -jump_velocity
 

@@ -33,6 +33,7 @@ func try_possess() -> bool:
 func unpossess(kill : bool, poison := false) -> void:
 	controlled = false
 	if(kill):
+		AudioManager.play_sfx(KILL_SOUND)
 		alive = false
 		modulate = Color(.2, .2, .2)
 		scale.y = -1

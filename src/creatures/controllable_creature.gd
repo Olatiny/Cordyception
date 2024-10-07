@@ -1,6 +1,9 @@
 class_name ControllableCreature
 extends CharacterBody2D
 
+const KILL_SOUND := preload("res://assets/Audio/kill.wav")
+const JUMP_SOUND := preload("res://assets/Audio/jump.wav")
+
 
 ## Player's movement speed
 @export var walk_speed := 75.0
@@ -74,6 +77,8 @@ func check_move():
 func check_jump():
 	if (Input.is_action_just_pressed("jump")):
 		velocity.y = -walk_speed * 4
+	
+	AudioManager.play_sfx(JUMP_SOUND)
 
 
 func update_animation():
