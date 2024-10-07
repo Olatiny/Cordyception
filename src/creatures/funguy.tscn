@@ -109,12 +109,12 @@ hframes = 4
 shape = SubResource("RectangleShape2D_422cx")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-3, 7)
+position = Vector2(-2, 7)
 target_position = Vector2(0, 2)
 collision_mask = 16
 
 [node name="GrassDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(3, 7)
+position = Vector2(2, 7)
 target_position = Vector2(0, 2)
 collision_mask = 16
 
