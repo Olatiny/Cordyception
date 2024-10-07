@@ -2,9 +2,11 @@ extends Control
 class_name GameEndMenu
 
 @export var next_level_name: String
+@onready var restart_button:= $"CenterContainer/VBoxContainer/Restart"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	restart_button.grab_focus()
 	pass # Replace with function body.
 
 

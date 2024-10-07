@@ -28,11 +28,13 @@ func LoadLevel(level: String):
 
 
 func OpenMainMenu():
+	start_button.grab_focus()
 	main_menu_screen.visible = true
 	credits_screen.visible = false
 
 
 func OpenCredits():
+	start_button.release_focus()
 	main_menu_screen.visible = false
 	credits_screen.visible = true
 
