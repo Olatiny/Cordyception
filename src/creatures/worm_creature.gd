@@ -154,11 +154,16 @@ func check_move():
 		if(lastCollision !=  null):
 			heading = heading.bounce(lastCollision.get_normal())
 		
-		var turn = Input.get_axis("move_left", "move_right")
-		if(turn < 0):
-			heading = heading.rotated(deg_to_rad(-dig_turn_speed))
-		elif(turn > 0):
-			heading = heading.rotated(deg_to_rad(dig_turn_speed))
+		var turn = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up","move_down"))
+		if(turn.length() > 0):
+			
+			var angle_diff = heading.angle_to(turn)
+			var turn_angle = minf(abs(angle_diff),deg_to_rad(dig_turn_speed)) * signf(angle_diff)
+			heading = heading.rotated(turn_angle)
+			#if(turn < 0):
+				#heading = heading.rotated(deg_to_rad(-dig_turn_speed))
+			#elif(turn > 0):
+				#heading = heading.rotated(deg_to_rad(dig_turn_speed))
 		velocity = heading * dig_speed
 	
 	elif(is_on_floor()):
