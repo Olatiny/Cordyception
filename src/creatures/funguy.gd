@@ -17,7 +17,7 @@ var my_state := STATE.SPORE_MODE
 
 
 ## baby jump
-@export var jump_velocity := 50.0
+@export var jump_velocity := 100.0
 
 ## Total number of possessions the player can make
 @export var num_possessions := 5
