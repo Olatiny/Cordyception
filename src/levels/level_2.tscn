@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/game_camera.gd" id="2_24dqr"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="3_yiwxm"]
 [ext_resource type="PackedScene" uid="uid://bohfdkcnf15e0" path="res://src/creatures/grasshopper.tscn" id="4_6loxu"]
-[ext_resource type="PackedScene" path="res://src/YouAreWinner!.tscn" id="5_rjxww"]
+[ext_resource type="PackedScene" uid="uid://bg571y5enpwg1" path="res://src/YouAreWinner!.tscn" id="5_rjxww"]
 [ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block_1.tscn" id="5_tvfwy"]
 
 [node name="LevelTest" type="Node2D"]
