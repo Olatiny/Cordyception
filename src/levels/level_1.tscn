@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://barc1epbhx8a7" path="res://tileset.tres" id="1_ucyrg"]
 [ext_resource type="Script" path="res://src/game_camera.gd" id="2_5eesy"]
-[ext_resource type="PackedScene" path="res://src/YouAreWinner!.tscn" id="3_8oudt"]
+[ext_resource type="PackedScene" uid="uid://bg571y5enpwg1" path="res://src/YouAreWinner!.tscn" id="3_8oudt"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="6_me620"]
 
 [node name="LevelTest2" type="Node2D"]

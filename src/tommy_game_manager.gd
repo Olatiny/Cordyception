@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 
 
 func start_game():
-	current_level = 2
+	current_level = -1
 	animation_player.play("progress_level")
 
 
