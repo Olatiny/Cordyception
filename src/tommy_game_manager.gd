@@ -8,7 +8,7 @@ var LEVELS = [
 	preload("res://src/levels/level_4.tscn"),
 	preload("res://src/levels/level_5.tscn"),
 	preload("res://src/levels/level_6.tscn"),
-	preload("res://src/levels/level_7.tscn"),
+	preload("res://src/levels/level_jack.tscn"),
 	preload("res://src/levels/level_8.tscn")
 ]
 
