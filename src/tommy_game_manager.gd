@@ -9,7 +9,7 @@ var LEVELS = [
 	preload("res://src/levels/level_6.tscn")
 ]
 
-var current_level := 0
+var current_level := -1
 
 var in_menu := false
 
@@ -46,6 +46,7 @@ func progress_level():
 		controls_indicators.visible = false
 		end_menu.visible = true
 		in_menu = true
+		get_tree().change_scene_to_file("res://game_end.tscn")
 		return
 	
 	in_menu = false
