@@ -2,11 +2,31 @@ class_name PillBug
 extends PossessableCreature
 
 
-enum STATE {BASE, PILL, SPIKE}
+enum STATE {
+	BASE, 
+	PILL, 
+	SPIKE
+}
 
-## current pillbug state
 var my_state := STATE.BASE
 
+enum ANIMATION_STATE {
+	IDLE,
+	ROLL,
+	WALKING,
+	SPIKE_ROLL,
+	JUMP
+}
+
+var ANIMATION_DICT = {
+	ANIMATION_STATE.IDLE: "idle",
+	ANIMATION_STATE.ROLL: "roll",
+	ANIMATION_STATE.WALKING: "walk",
+	ANIMATION_STATE.SPIKE_ROLL: "roll",
+	ANIMATION_STATE.JUMP: "idle"
+}
+
+var my_animation_state := ANIMATION_STATE.IDLE
 
 ## jump velocity for small jump
 @export var jump_velocity := 50
@@ -28,8 +48,30 @@ var climb_shapes = []
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
+	if !alive:
+		my_animation_state = ANIMATION_STATE.IDLE
+		my_state = STATE.BASE
+		$Sprite2D.rotation_degrees = 0
+	
+	update_state()
+	
 	if primary_used && alive:
 		velocity.y = -ascend_velocity
+
+
+func update_state():
+	if my_animation_state == ANIMATION_STATE.JUMP && not is_on_floor():
+		return
+	
+	if my_state == STATE.SPIKE:
+		return
+	
+	if my_state == STATE.PILL:
+		my_animation_state = ANIMATION_STATE.ROLL
+	elif my_state == STATE.BASE:
+		my_animation_state = ANIMATION_STATE.IDLE
+	elif my_state == STATE.SPIKE:
+		my_animation_state = ANIMATION_STATE.SPIKE_ROLL
 
 
 ## Grasshopper Big Jump
@@ -44,7 +86,10 @@ func check_primary_action() -> void:
 	if climb_shapes.is_empty():
 		return
 	
+	$Sprite2D.rotation_degrees = 90 if $WallCheckL.get_collider() else -90
+	
 	my_state = STATE.SPIKE
+	my_animation_state = ANIMATION_STATE.SPIKE_ROLL
 	velocity.y = -ascend_velocity
 	
 	primary_used = true
@@ -74,6 +119,8 @@ func check_move():
 func _base_movement():
 	var direction := Input.get_axis("move_left", "move_right")
 	
+	my_animation_state = ANIMATION_STATE.WALKING
+	
 	if direction:
 		velocity.x = direction * walk_speed
 	else:
@@ -93,12 +140,18 @@ func _pill_movement():
 ## Checks for jump
 func check_jump():
 	if my_state == STATE.BASE && is_on_floor() && (Input.is_action_just_pressed("jump")):
+		my_animation_state = ANIMATION_STATE.JUMP
 		velocity.y = -jump_velocity
 
 
 ## TODO: animations
-func update_animation():
-	pass
+func update_animation(reset := false):
+	var name = ANIMATION_DICT[my_animation_state]
+	var suffix = "_L" if face_direction.x < 0 else "_R"
+	name += suffix
+	
+	if reset || $AnimationPlayer.current_animation != name:
+		$AnimationPlayer.play(name)
 
 
 ## WAL
@@ -122,10 +175,11 @@ func unpossess(kill : bool, poison := false) -> void:
 		return
 	
 	controlled = false
-	alive = !kill
-	velocity.y = -25
+	if (kill):
+		alive = false
+		$Sprite2D.modulate = Color(.2, .2, .2)
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position
-	fun_dude.velocity.y = -ascend_velocity * 2 if primary_used else -25.0
+	fun_dude.velocity.y = -ascend_velocity if primary_used else -25.0
 	get_tree().root.call_deferred("add_child", fun_dude)

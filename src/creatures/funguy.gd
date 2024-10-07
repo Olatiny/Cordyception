@@ -106,7 +106,7 @@ func check_move():
 	
 	#if grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
 		#direction = 0
-	#
+	
 	#if grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
 		#direction = 0
 	

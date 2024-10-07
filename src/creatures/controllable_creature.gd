@@ -37,8 +37,9 @@ func _physics_process(delta: float) -> void:
 		check_jump()
 		check_primary_action()
 		check_secondary_action()
-		update_animation()
 		check_unpossess()
+	
+	update_animation()
 	
 	velocity.x = clampf(velocity.x, -terminal_velocity.x, terminal_velocity.x)
 	velocity.y = clampf(velocity.y, -terminal_velocity.y, terminal_velocity.y)
