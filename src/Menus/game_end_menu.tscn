@@ -1,7 +1,155 @@
-[gd_scene load_steps=3 format=3 uid="uid://0pl50sk2koof"]
+[gd_scene load_steps=33 format=3 uid="uid://0pl50sk2koof"]
 
 [ext_resource type="Script" path="res://src/Menus/game_end_menu.gd" id="1_jwe0y"]
-[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_oqtvb"]
+[ext_resource type="Texture2D" uid="uid://c8gubf6aexvuj" path="res://assets/environment/Background Layers/Back Layer BG.png" id="3_o32ch"]
+[ext_resource type="Texture2D" uid="uid://cll1poahstv1g" path="res://assets/environment/Witch Hut.png" id="3_vkp03"]
+[ext_resource type="Texture2D" uid="uid://cod2a7nivtwd7" path="res://assets/characters/Witch.png" id="4_65l2h"]
+[ext_resource type="Texture2D" uid="uid://dlvmrjxj4h6el" path="res://assets/characters/Roller.png" id="5_mnqdk"]
+[ext_resource type="Texture2D" uid="uid://bxlw18l6bhknf" path="res://assets/characters/Jumper.png" id="6_8b1kl"]
+[ext_resource type="Texture2D" uid="uid://cnw4128xknuaw" path="res://assets/environment/Mushroom 2.png" id="6_eq1xv"]
+[ext_resource type="Texture2D" uid="uid://bl8ls8huslpmi" path="res://assets/environment/Mushroom 3.png" id="7_dgj5h"]
+[ext_resource type="Texture2D" uid="uid://cufgg1ds6ksn" path="res://assets/environment/Mushroom 5.png" id="8_i23ud"]
+[ext_resource type="Texture2D" uid="uid://ib20j5ft6qku" path="res://assets/environment/Fungus 2.png" id="9_qwoty"]
+[ext_resource type="Texture2D" uid="uid://diqx4jmn1ihhv" path="res://assets/environment/Fungus 1.png" id="10_o4n0k"]
+[ext_resource type="Texture2D" uid="uid://bd7xvumabrvgo" path="res://assets/environment/Mushroom 4.png" id="11_05s1l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3toh"]
+atlas = ExtResource("4_65l2h")
+region = Rect2(0, 0, 15, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g5mg"]
+atlas = ExtResource("4_65l2h")
+region = Rect2(15, 0, 15, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffw1d"]
+atlas = ExtResource("4_65l2h")
+region = Rect2(30, 0, 15, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8k8"]
+atlas = ExtResource("4_65l2h")
+region = Rect2(45, 0, 15, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fa6eo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3toh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g5mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffw1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8k8")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc85f"]
+atlas = ExtResource("5_mnqdk")
+region = Rect2(0, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2vfe"]
+atlas = ExtResource("5_mnqdk")
+region = Rect2(32, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq028"]
+atlas = ExtResource("5_mnqdk")
+region = Rect2(64, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0v46"]
+atlas = ExtResource("5_mnqdk")
+region = Rect2(96, 0, 32, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62shs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc85f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2vfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq028")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0v46")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x534h"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(0, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf2kv"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(22, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1stea"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(44, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvt8l"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(66, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bns1h"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(88, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frr2a"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(110, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ticcc"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(132, 0, 22, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umt3p"]
+atlas = ExtResource("6_8b1kl")
+region = Rect2(154, 0, 22, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aom64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x534h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf2kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1stea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvt8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bns1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frr2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ticcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umt3p")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_teslm"]
 
 [node name="GameEndMenu" type="Control"]
 layout_mode = 3
@@ -12,45 +160,137 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jwe0y")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-texture = ExtResource("2_oqtvb")
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o32ch")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -155.5
+offset_top = -88.0
+offset_right = 155.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_vkp03")
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="TextureRect2/HBoxContainer/TextureRect"]
+position = Vector2(36.5, 45)
+sprite_frames = SubResource("SpriteFrames_fa6eo")
+animation = &"new_animation"
+autoplay = "new_animation"
+offset = Vector2(0, 0.5)
+
+[node name="TextureRect2" type="AnimatedSprite2D" parent="TextureRect2/HBoxContainer/TextureRect"]
+position = Vector2(253.5, 77)
+sprite_frames = SubResource("SpriteFrames_62shs")
+animation = &"new_animation"
+autoplay = "new_animation"
+offset = Vector2(0.5, 0.5)
+
+[node name="TextureRect3" type="AnimatedSprite2D" parent="TextureRect2/HBoxContainer/TextureRect"]
+position = Vector2(96.5, 75)
+sprite_frames = SubResource("SpriteFrames_aom64")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.774138
+offset = Vector2(0.5, 0)
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("6_eq1xv")
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("7_dgj5h")
+
+[node name="TextureRect5" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("8_i23ud")
+
+[node name="TextureRect6" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("9_qwoty")
+
+[node name="TextureRect7" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("10_o4n0k")
+
+[node name="TextureRect8" type="TextureRect" parent="TextureRect2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("11_05s1l")
+
+[node name="Label2" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -83.0
+offset_right = 83.0
+offset_bottom = 32.0
 grow_horizontal = 2
-
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer"]
-layout_mode = 2
-text = "Pause"
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 32
+text = "You Win!"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="NextLevel" type="Button" parent="TextureRect/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -26.0
+offset_right = 54.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 14
-text = "Next"
-
-[node name="Restart" type="Button" parent="TextureRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_teslm")
 text = "Restart"
 
-[node name="Menu" type="Button" parent="TextureRect/VBoxContainer"]
+[node name="Menu" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_teslm")
 text = "Menu"
 
-[connection signal="pressed" from="TextureRect/VBoxContainer/NextLevel" to="." method="_next"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/Restart" to="." method="_restart"]
-[connection signal="pressed" from="TextureRect/VBoxContainer/Menu" to="." method="_main_menu"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Restart" to="." method="_restart"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu" to="." method="_main_menu"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="3_6soxm"]
 [ext_resource type="PackedScene" uid="uid://bohfdkcnf15e0" path="res://src/creatures/grasshopper.tscn" id="4_0y3wg"]
 [ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block_1.tscn" id="5_pc6r4"]
-[ext_resource type="PackedScene" path="res://src/YouAreWinner!.tscn" id="5_pvefs"]
+[ext_resource type="PackedScene" uid="uid://bg571y5enpwg1" path="res://src/YouAreWinner!.tscn" id="5_pvefs"]
 
 [node name="LevelTest" type="Node2D"]
 
