@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmy1hldxwv88y"]
 
-[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_ld2xq"]
 [ext_resource type="Script" path="res://src/Menus/main_menu.gd" id="1_srb4k"]
+[ext_resource type="FontFile" uid="uid://cnw6mdsr7r60" path="res://assets/temp/GrapeSoda.ttf" id="2_07jgb"]
 [ext_resource type="PackedScene" uid="uid://ffswee3ghga6" path="res://src/Menus/level_button.tscn" id="3_wc01h"]
 
 [node name="MainMenu" type="Control"]
@@ -16,15 +16,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_srb4k")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-offset_right = 320.0
-offset_bottom = 180.0
-texture = ExtResource("1_ld2xq")
-expand_mode = 1
-
 [node name="MainScreen" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 5.0
@@ -36,8 +28,9 @@ offset_bottom = 45.0
 layout_mode = 1
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 165.0
-offset_bottom = 44.0
+offset_right = 135.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("2_07jgb")
 theme_override_font_sizes/font_size = 24
 text = "Cordyception"
 
@@ -53,6 +46,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_neighbor_bottom = NodePath("../Level Select")
+theme_override_fonts/font = ExtResource("2_07jgb")
 theme_override_font_sizes/font_size = 16
 text = "Start"
 alignment = 0
@@ -63,6 +57,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
+theme_override_fonts/font = ExtResource("2_07jgb")
 theme_override_font_sizes/font_size = 16
 text = "Level Select"
 alignment = 0
@@ -72,11 +67,13 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Level Select")
+theme_override_fonts/font = ExtResource("2_07jgb")
 theme_override_font_sizes/font_size = 16
 text = "Quit"
 alignment = 0
 
 [node name="LevelSelectScreen" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -87,6 +84,7 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 165.0
 offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_07jgb")
 theme_override_font_sizes/font_size = 24
 text = "Level Select"
 
@@ -100,16 +98,19 @@ columns = 4
 
 [node name="Level 1" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_07jgb")
 text = "1"
 level_to_load = "res://wormtest2.tscn"
 
 [node name="Level 2" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_07jgb")
 text = "2"
 level_to_load = "level 2"
 
 [node name="Level 3" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_07jgb")
 text = "3"
 level_to_load = "level 3"
 
@@ -124,6 +125,7 @@ offset_right = 270.0
 offset_bottom = 41.0
 grow_horizontal = 0
 pivot_offset = Vector2(45, 0)
+theme_override_fonts/font = ExtResource("2_07jgb")
 text = "Back
 "
 

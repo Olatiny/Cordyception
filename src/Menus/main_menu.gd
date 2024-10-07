@@ -7,11 +7,12 @@ class_name MainMenu
 @onready var level_one_button := $"LevelSelectScreen/Levels/Level 1"
 @onready var level_button_holder := $"LevelSelectScreen/Levels"
 
-@export var level_one_name := "res://wormtest2.tscn"
+@export var level_one_name := "res://src/levels/level_1.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	OpenMainMenu()
+	TommyGameManager.controls_indicators.hide()
 	for level_button in level_button_holder.get_children():
 		level_button.try_load_level.connect(LoadLevel)
 
@@ -27,7 +28,7 @@ func StartGame():
 
 func LoadLevel(level: String):
 	print("load level ", level)
-	#load(level)
+	TommyGameManager.controls_indicators.show()
 	get_tree().change_scene_to_file(level)
 
 
