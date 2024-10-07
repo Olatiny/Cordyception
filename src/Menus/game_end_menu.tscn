@@ -1,7 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://0pl50sk2koof"]
+[gd_scene load_steps=32 format=3 uid="uid://0pl50sk2koof"]
 
 [ext_resource type="Script" path="res://src/Menus/game_end_menu.gd" id="1_jwe0y"]
-[ext_resource type="Texture2D" uid="uid://c8gubf6aexvuj" path="res://assets/environment/Background Layers/Back Layer BG.png" id="3_o32ch"]
 [ext_resource type="Texture2D" uid="uid://cll1poahstv1g" path="res://assets/environment/Witch Hut.png" id="3_vkp03"]
 [ext_resource type="Texture2D" uid="uid://cod2a7nivtwd7" path="res://assets/characters/Witch.png" id="4_65l2h"]
 [ext_resource type="Texture2D" uid="uid://dlvmrjxj4h6el" path="res://assets/characters/Roller.png" id="5_mnqdk"]
@@ -167,10 +166,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_o32ch")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect2"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

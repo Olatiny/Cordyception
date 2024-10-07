@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://po4ufywu16nu"]
+
+[ext_resource type="Script" path="res://camera_auto_scroll.gd" id="2_gttkh"]
+
+[node name="GameEnd" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("2_gttkh")
+scroll_speed = 25.0

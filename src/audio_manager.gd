@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var music := $Music as AudioStreamPlayer
+@onready var music := $MUSIC as AudioStreamPlayer
 
 
 ## Toggles paused state
