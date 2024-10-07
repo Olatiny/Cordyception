@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://src/global.gd"
 TommyGameManager="*res://src/tommy_game_manager.tscn"
+AudioManager="*res://src/AudioManager.tscn"
 
 [display]
 
