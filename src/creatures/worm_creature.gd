@@ -25,6 +25,8 @@ const BREAK_SOUND = preload("res://assets/Audio/break.wav")
 @export var dig_end_boost := 100
 @export var destroy_end_boost :=150
 @export var can_dig_down := false
+@export var air_drag = 10
+var launched = false
 
 var burrowing := false
 var started_burrowing_this_frame := false
@@ -61,6 +63,12 @@ func _physics_process(delta: float) -> void:
 	@warning_ignore("redundant_await")
 	await update_state()
 	
+	if(!is_on_floor() && !launched && velocity.x > 0):
+		velocity.x = maxf(0, velocity.x - air_drag)
+	elif(!is_on_floor() && !launched && velocity.x < 0):
+		velocity.x = minf(0, velocity.x + air_drag)
+	elif(is_on_floor()):
+		launched = false
 	super(delta)
 
 
@@ -213,6 +221,7 @@ func check_move():
 			burrowing = false
 			velocity = dig_end_boost * heading
 			set_collision_mask_value(1,true);
+			launched = true
 			return
 		
 		var lastCollision = get_last_slide_collision() 

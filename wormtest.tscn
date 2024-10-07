@@ -308,3 +308,4 @@ position = Vector2(172, 52)
 [node name="worm_creature" parent="." instance=ExtResource("4_5v54w")]
 position = Vector2(149, 105)
 scale = Vector2(0.1, 0.1)
+air_drag = 10
