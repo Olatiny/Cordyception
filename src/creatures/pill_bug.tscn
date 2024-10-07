@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqmmatkoh6y4v"]
+[gd_scene load_steps=16 format=3 uid="uid://bqmmatkoh6y4v"]
 
 [ext_resource type="Script" path="res://src/creatures/pill_bug.gd" id="1_kbjn7"]
 [ext_resource type="Texture2D" uid="uid://dlvmrjxj4h6el" path="res://assets/characters/Roller.png" id="2_0ekb1"]
+[ext_resource type="Texture2D" uid="uid://b0rbrhmpisx7n" path="res://assets/characters/Rollerceps.png" id="3_mxqws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
 size = Vector2(22, 15)
@@ -519,6 +520,8 @@ texture = ExtResource("2_0ekb1")
 hframes = 14
 
 [node name="Possess" type="Sprite2D" parent="."]
+texture = ExtResource("3_mxqws")
+hframes = 14
 
 [node name="WallBox" type="Area2D" parent="."]
 collision_layer = 0
