@@ -175,7 +175,7 @@ func unpossess(kill : bool, poison := false) -> void:
 		return
 	
 	controlled = false
-	if (primary_used || kill):
+	if (kill):
 		alive = false
 		modulate = Color(.2, .2, .2)
 		scale.y = -1
@@ -183,4 +183,4 @@ func unpossess(kill : bool, poison := false) -> void:
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position + Vector2(0, -4)
 	fun_dude.velocity.y = -ascend_velocity if primary_used else -fun_dude.jump_velocity
-	get_parent().call_deferred("add_child", fun_dude)
+	get_tree().root.call_deferred("add_child", fun_dude)
