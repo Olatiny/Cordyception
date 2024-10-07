@@ -1,17 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmlabbdllf11i"]
+[gd_scene load_steps=7 format=3 uid="uid://dmlabbdllf11i"]
 
 [ext_resource type="PackedScene" uid="uid://coqwc26wxxg2i" path="res://src/blocks/block.tscn" id="1_ek1g8"]
 [ext_resource type="PackedScene" uid="uid://bn5iw8gdqotvq" path="res://src/blocks/block components/pushable.tscn" id="2_6d3qt"]
-[ext_resource type="Texture2D" uid="uid://b32nckfo6m868" path="res://assets/temp/temp-tiles.png" id="2_k61s2"]
+[ext_resource type="Texture2D" uid="uid://duib4hih3up8t" path="res://assets/environment/Dirt Pushable.png" id="2_sdqkv"]
 [ext_resource type="PackedScene" uid="uid://dvdvplm8qefdc" path="res://src/blocks/block components/descructible.tscn" id="3_o84f2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu5f1"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky22a"]
+size = Vector2(22, 14)
 
 [node name="GrassBlock" instance=ExtResource("1_ek1g8")]
 is_diggable = true
 
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_bu5f1")
+
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_k61s2")
-hframes = 5
+texture = ExtResource("2_sdqkv")
 
 [node name="Pushable" parent="." index="2" instance=ExtResource("2_6d3qt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pushable" index="0"]
+shape = SubResource("RectangleShape2D_ky22a")
 
 [node name="Descructible" parent="." index="3" instance=ExtResource("3_o84f2")]

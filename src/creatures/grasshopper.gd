@@ -2,6 +2,23 @@ class_name Grasshopper
 extends PossessableCreature
 
 
+enum STATE {
+	IDLE,
+	PUSH,
+	WALK,
+	JUMP
+}
+
+@export var my_state := STATE.IDLE
+
+const ANIM_DICT = {
+	STATE.IDLE: "idle",
+	STATE.WALK: "walk",
+	STATE.PUSH: "push",
+	STATE.JUMP: "idle"
+}
+
+
 ## jump velocity for small jump
 @export var small_jump_velocity := 50
 
@@ -33,7 +50,22 @@ func _physics_process(delta: float) -> void:
 		push_left_shape.disabled = false
 		push_right_shape.disabled = true
 	
+	set_state()
+	
 	super(delta)
+
+
+func set_state():
+	if my_state == STATE.PUSH:
+		return
+	
+	if my_state == STATE.JUMP && not is_on_floor():
+		return
+	
+	if velocity != Vector2.ZERO:
+		my_state = STATE.WALK
+	else:
+		my_state = STATE.IDLE
 
 
 ## Grasshopper Big Jump
@@ -55,6 +87,8 @@ func check_secondary_action() -> void:
 	for block in block_components:
 		if block is Pushable:
 			block.activate()
+			my_state = STATE.PUSH
+			update_animation(true)
 
 
 ## Movement controls
@@ -71,11 +105,7 @@ func check_move():
 func check_jump():
 	if is_on_floor() && (Input.is_action_just_pressed("jump")):
 		velocity.y = -small_jump_velocity
-
-
-## TODO: animations
-func update_animation():
-	pass
+		my_state = STATE.JUMP
 
 
 ## When grasshopper lands after using big jump, kil
@@ -94,3 +124,12 @@ func unpossess(kill : bool, poison := false) -> void:
 	fun_dude.global_position = global_position
 	fun_dude.velocity.y = -25.0
 	get_tree().root.call_deferred("add_child", fun_dude)
+
+
+func update_animation(restart := false):
+	var name = ANIM_DICT[my_state]
+	var suffix = "_L" if face_direction.x < 0 else "_R"
+	name += suffix
+	
+	if restart || $AnimationPlayer.current_animation != name:
+		$AnimationPlayer.play(name)

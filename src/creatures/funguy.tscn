@@ -29,13 +29,13 @@ scale = Vector2(0.065, 0.125)
 texture = ExtResource("2_64nkj")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-3.5, 8)
-target_position = Vector2(0, 1)
+position = Vector2(-3, 7)
+target_position = Vector2(0, 2)
 collision_mask = 16
 
 [node name="GrassDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(3.5, 8)
-target_position = Vector2(0, 1)
+position = Vector2(3, 7)
+target_position = Vector2(0, 2)
 collision_mask = 16
 
 [node name="PossessArea" type="Area2D" parent="."]

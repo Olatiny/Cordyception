@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_8vyrb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pajnm"]
-size = Vector2(8, 8)
+size = Vector2(11.875, 7)
 
 [node name="Block" type="CharacterBody2D"]
 modulate = Color(0.77, 0.77, 0.5621, 1)

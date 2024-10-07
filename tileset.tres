@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=14 format=3 uid="uid://barc1epbhx8a7"]
 
 [ext_resource type="PackedScene" uid="uid://dy7nifjggekb4" path="res://src/blocks/poison.tscn" id="1_bb1ip"]
-[ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block.tscn" id="2_q1vab"]
+[ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block_1.tscn" id="2_e46wd"]
 [ext_resource type="PackedScene" uid="uid://b7mft4fr1ldx1" path="res://src/blocks/dirt_block.tscn" id="3_yrhx5"]
 [ext_resource type="PackedScene" uid="uid://dmlabbdllf11i" path="res://src/blocks/grass_block.tscn" id="4_lmwf7"]
 [ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="5_q25hj"]
@@ -11,7 +11,7 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_b133w"]
 scenes/1/scene = ExtResource("1_bb1ip")
-scenes/2/scene = ExtResource("2_q1vab")
+scenes/2/scene = ExtResource("2_e46wd")
 scenes/3/scene = ExtResource("3_yrhx5")
 scenes/4/scene = ExtResource("4_lmwf7")
 

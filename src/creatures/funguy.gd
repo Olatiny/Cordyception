@@ -65,6 +65,7 @@ func update_state():
 	
 	if grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
 		my_state = STATE.SPLAT
+		modulate = Color.RED
 	else:
 		my_state = STATE.IDLE
 	
@@ -103,11 +104,11 @@ func update_animation():
 func check_move():
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
-		direction = 0
-	
-	if grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
-		direction = 0
+	#if grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
+		#direction = 0
+	#
+	#if grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
+		#direction = 0
 	
 	if direction:
 		velocity.x = direction * walk_speed
