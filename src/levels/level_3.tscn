@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://rqh2d7odot72"]
 
-[ext_resource type="TileSet" uid="uid://d018w0l4qbfdn" path="res://tileset.tres" id="1_2t8ak"]
+[ext_resource type="TileSet" uid="uid://barc1epbhx8a7" path="res://tileset.tres" id="1_2t8ak"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="3_6soxm"]
 [ext_resource type="PackedScene" uid="uid://bohfdkcnf15e0" path="res://src/creatures/grasshopper.tscn" id="4_0y3wg"]
 [ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block_1.tscn" id="5_pc6r4"]

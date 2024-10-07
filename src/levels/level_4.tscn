@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=4 uid="uid://jlkx2pb4oisw"]
+[gd_scene load_steps=6 format=4 uid="uid://jlkx2pb4oisw"]
 
-[ext_resource type="TileSet" uid="uid://d018w0l4qbfdn" path="res://tileset.tres" id="1_mh3rv"]
+[ext_resource type="Script" path="res://src/levels/level_info.gd" id="1_j6ru5"]
+[ext_resource type="TileSet" uid="uid://barc1epbhx8a7" path="res://tileset.tres" id="1_mh3rv"]
 [ext_resource type="PackedScene" uid="uid://dosgtptmb0811" path="res://src/creatures/funguy.tscn" id="2_mhh6y"]
-[ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block.tscn" id="3_13qqo"]
+[ext_resource type="PackedScene" uid="uid://du1fd8vdeuso" path="res://src/blocks/boulder_block_1.tscn" id="3_13qqo"]
 [ext_resource type="PackedScene" uid="uid://dwbbe3il7y4x1" path="res://src/creatures/worm_creature.tscn" id="4_cym7u"]
 
-[node name="LevelTest" type="Node2D"]
+[node name="LevelTest" type="Node2D" node_paths=PackedStringArray("_dirt_tilemap", "_stone_tilemap")]
+script = ExtResource("1_j6ru5")
+_dirt_tilemap = NodePath("Grass")
+_stone_tilemap = NodePath("Rock")
 
 [node name="Grass" type="TileMapLayer" parent="."]
 z_index = 1
@@ -30,4 +34,5 @@ position = Vector2(128, 56)
 position = Vector2(104, 56)
 
 [node name="worm_creature" parent="." instance=ExtResource("4_cym7u")]
+z_index = 120
 position = Vector2(202, 130)

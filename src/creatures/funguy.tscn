@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dosgtptmb0811"]
 
 [ext_resource type="Script" path="res://src/creatures/funguy.gd" id="1_mojjp"]
-[ext_resource type="Texture2D" uid="uid://b0ucsxe5myn3g" path="res://assets/characters/Witch.png" id="2_oe1l8"]
+[ext_resource type="Texture2D" uid="uid://cod2a7nivtwd7" path="res://assets/characters/Witch.png" id="2_oe1l8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pgplg"]
 radius = 7.0
@@ -9,6 +9,38 @@ height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
 size = Vector2(7, 15)
+
+[sub_resource type="Animation" id="Animation_tg7qm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dujdu"]
+resource_name = "down"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_810ti"]
 resource_name = "idle"
@@ -28,21 +60,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_tg7qm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_3lvhk"]
 resource_name = "up"
 length = 0.1
@@ -58,23 +75,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_dujdu"]
-resource_name = "down"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fmgcw"]
