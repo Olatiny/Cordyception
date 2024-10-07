@@ -164,9 +164,10 @@ func check_primary_action() -> void:
 			velocity = Vector2.DOWN * destroy_end_boost
 			alive = false
 	
-	primary_used = true
-	unpossess(true)
-	dirt_tile_map.set_cells_terrain_connect(dirt_tile_map.get_used_cells(), 0, 0)
+	if !alive:
+		primary_used = true
+		unpossess(true)
+		dirt_tile_map.set_cells_terrain_connect(dirt_tile_map.get_used_cells(), 0, 0)
 
 
 func check_secondary_action() -> void:
