@@ -16,6 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cls0d")
+active_color = Color(1, 1, 1, 1)
+inactive_color = Color(0.54099, 0.54099, 0.54099, 1)
 
 [node name="BR" type="HBoxContainer" parent="."]
 layout_mode = 1
