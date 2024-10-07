@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://src/global.gd"
+Pranav="*res://src/pranav.gd"
 TommyGameManager="*res://src/tommy_game_manager.tscn"
 AudioManager="*res://src/AudioManager.tscn"
 

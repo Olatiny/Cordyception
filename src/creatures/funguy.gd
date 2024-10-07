@@ -2,6 +2,9 @@ class_name FunGuy
 extends ControllableCreature
 
 
+const POSSESS_SOUND = preload("res://assets/Audio/possess.wav")
+
+
 ## States the player can be in
 enum STATE {
 	IDLE,
@@ -61,13 +64,7 @@ func update_state():
 		return
 	
 	if grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
-		my_state = STATE.SPLAT
-		modulate = Color(.2, .2, .2)
-		scale.y /= 2
-		
-		await get_tree().create_timer(1).timeout
-
-		TommyGameManager.reset_level(true)
+		kill()
 	else:
 		my_state = STATE.IDLE
 	
@@ -77,6 +74,8 @@ func possess():
 	var valid_bugs: Array[Node2D] = possess_area.get_overlapping_bodies()
 	valid_bugs.erase(self)
 	print("possess ",valid_bugs," ",valid_bugs.size())
+	
+	AudioManager.play_sfx(POSSESS_SOUND)
 	
 	# no bugs to possess
 	if valid_bugs.size() <= 0:
@@ -127,8 +126,18 @@ func check_jump():
 	if not is_on_floor() || !Input.is_action_just_pressed("jump"):
 		return
 	
+	AudioManager.play_sfx(JUMP_SOUND, 0.02)
+	
 	velocity.y = -jump_velocity
 
 
 func kill():
 	my_state = STATE.SPLAT
+	modulate = Color(.2, .2, .2)
+	scale.y /= 2
+	
+	AudioManager.play_sfx(KILL_SOUND)
+	
+	await get_tree().create_timer(1).timeout
+
+	TommyGameManager.reset_level(true)

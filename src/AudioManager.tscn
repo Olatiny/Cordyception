@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bayqhoy802cof"]
+[gd_scene load_steps=3 format=3 uid="uid://txpunlnwdnpu"]
 
 [ext_resource type="Script" path="res://src/audio_manager.gd" id="1_8euey"]
 [ext_resource type="AudioStream" uid="uid://do2sn2a26tlsg" path="res://assets/Audio/cordysong.wav" id="2_p2vxp"]

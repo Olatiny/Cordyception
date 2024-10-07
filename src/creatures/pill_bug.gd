@@ -142,6 +142,8 @@ func check_jump():
 	if my_state == STATE.BASE && is_on_floor() && (Input.is_action_just_pressed("jump")):
 		my_animation_state = ANIMATION_STATE.JUMP
 		velocity.y = -jump_velocity
+		
+		AudioManager.play_sfx(JUMP_SOUND, 0.02)
 
 
 ## TODO: animations
@@ -176,9 +178,12 @@ func unpossess(kill : bool, poison := false) -> void:
 	
 	controlled = false
 	if (primary_used || kill):
+		AudioManager.play_sfx(KILL_SOUND)
 		alive = false
 		modulate = Color(.2, .2, .2)
 		scale.y = -1
+	else:
+		AudioManager.play_sfx(UNPOSSESS_SOUND)
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position + Vector2(0, -4)

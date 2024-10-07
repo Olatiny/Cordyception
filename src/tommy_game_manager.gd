@@ -6,7 +6,10 @@ var LEVELS = [
 	preload("res://src/levels/level_2.tscn"),
 	preload("res://src/levels/level_3.tscn"),
 	preload("res://src/levels/level_4.tscn"),
-	preload("res://src/levels/level_6.tscn")
+	preload("res://src/levels/level_5.tscn"),
+	preload("res://src/levels/level_6.tscn"),
+	preload("res://src/levels/level_7.tscn"),
+	preload("res://src/levels/level_8.tscn")
 ]
 
 var current_level := -1
