@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://du1fd8vdeuso"]
+[gd_scene load_steps=6 format=3 uid="uid://du1fd8vdeuso"]
 
 [ext_resource type="PackedScene" uid="uid://coqwc26wxxg2i" path="res://src/blocks/block.tscn" id="1_rsria"]
 [ext_resource type="Texture2D" uid="uid://cfe8o5ir6qdty" path="res://assets/environment/Rock 1.png" id="2_v0yqd"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_363j3"]
 size = Vector2(5.5, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbtxf"]
-size = Vector2(2, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khbyj"]
 size = Vector2(23, 16)
@@ -21,15 +18,10 @@ position = Vector2(1.5, 1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_363j3")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(-5, 4.5)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_dbtxf")
-
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_v0yqd")
 
-[node name="Pushable" parent="." index="3" instance=ExtResource("3_twb0p")]
+[node name="Pushable" parent="." index="2" instance=ExtResource("3_twb0p")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pushable" index="0"]
 shape = SubResource("RectangleShape2D_khbyj")

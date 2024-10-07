@@ -50,9 +50,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("possess"):
 		possess()
 	
-	if Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
-	
 	physics_collisions = possess_area.get_overlapping_bodies()
 	
 	super(delta)
@@ -93,22 +90,22 @@ func possess():
 
 ## Updates animations according to the player's state
 func update_animation():
-	match my_state:
-		STATE.IDLE:
-			pass
-		_:
-			pass
+	if velocity.y == 0:
+		$AnimationPlayer.play("idle")
+	elif velocity.y > 0:
+		$AnimationPlayer.play("up")
+	else:
+		$AnimationPlayer.play("down")
 
 
 ## Handles movement according to player's state
 func check_move():
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	#if grass_raycast_left.is_colliding() && direction < 0 && my_state != STATE.SPORE_MODE:
-		#direction = 0
-	
-	#if grass_raycast_right.is_colliding() && direction > 0 && my_state != STATE.SPORE_MODE:
-		#direction = 0
+	if direction > 0:
+		$Sprite2D.flip_h = true
+	elif direction < 0:
+		$Sprite2D.flip_h = false
 	
 	if direction:
 		velocity.x = direction * walk_speed

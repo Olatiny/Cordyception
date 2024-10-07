@@ -1,32 +1,113 @@
-[gd_scene load_steps=5 format=3 uid="uid://dosgtptmb0811"]
+[gd_scene load_steps=10 format=3 uid="uid://dosgtptmb0811"]
 
 [ext_resource type="Script" path="res://src/creatures/funguy.gd" id="1_mojjp"]
-[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="2_64nkj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
-size = Vector2(7, 7.75)
+[ext_resource type="Texture2D" uid="uid://b0ucsxe5myn3g" path="res://assets/characters/Witch.png" id="2_oe1l8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pgplg"]
-radius = 4.0
-height = 16.0
+radius = 7.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_422cx"]
+size = Vector2(7, 15)
+
+[sub_resource type="Animation" id="Animation_810ti"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.153846, 0.307692, 0.461538),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_tg7qm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3lvhk"]
+resource_name = "up"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_dujdu"]
+resource_name = "down"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmgcw"]
+_data = {
+"RESET": SubResource("Animation_tg7qm"),
+"down": SubResource("Animation_dujdu"),
+"idle": SubResource("Animation_810ti"),
+"up": SubResource("Animation_3lvhk")
+}
 
 [node name="Funguy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_mojjp")
 jump_velocity = 90.0
-walk_speed = 30.0
+walk_speed = 40.0
 gravity = 450.0
 terminal_velocity = Vector2(75, 300)
 controlled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 2)
-shape = SubResource("RectangleShape2D_422cx")
+[node name="PossessArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="PossessShape" type="CollisionShape2D" parent="PossessArea"]
+shape = SubResource("CapsuleShape2D_pgplg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.065, 0.125)
-texture = ExtResource("2_64nkj")
+texture = ExtResource("2_oe1l8")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_422cx")
 
 [node name="GrassDetectorLeft" type="RayCast2D" parent="."]
 position = Vector2(-3, 7)
@@ -38,9 +119,7 @@ position = Vector2(3, 7)
 target_position = Vector2(0, 2)
 collision_mask = 16
 
-[node name="PossessArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="PossessShape" type="CollisionShape2D" parent="PossessArea"]
-shape = SubResource("CapsuleShape2D_pgplg")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fmgcw")
+}

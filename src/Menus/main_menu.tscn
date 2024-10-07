@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmy1hldxwv88y"]
+
+[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_ld2xq"]
+[ext_resource type="Script" path="res://src/Menus/main_menu.gd" id="1_srb4k"]
+[ext_resource type="PackedScene" uid="uid://ffswee3ghga6" path="res://src/Menus/level_button.tscn" id="3_wc01h"]
+
+[node name="MainMenu" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_srb4k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_ld2xq")
+expand_mode = 1
+
+[node name="MainScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Label" type="Label" parent="MainScreen"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 165.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 24
+text = "Cordyception"
+
+[node name="MainMenuOptions" type="VBoxContainer" parent="MainScreen"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 109.0
+offset_bottom = 146.0
+
+[node name="Start" type="Button" parent="MainScreen/MainMenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../Level Select")
+theme_override_font_sizes/font_size = 16
+text = "Start"
+alignment = 0
+
+[node name="Level Select" type="Button" parent="MainScreen/MainMenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+theme_override_font_sizes/font_size = 16
+text = "Level Select"
+alignment = 0
+
+[node name="Quit" type="Button" parent="MainScreen/MainMenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Level Select")
+theme_override_font_sizes/font_size = 16
+text = "Quit"
+alignment = 0
+
+[node name="LevelSelectScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="LevelSelectScreen"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 165.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 24
+text = "Level Select"
+
+[node name="Levels" type="GridContainer" parent="LevelSelectScreen"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 109.0
+offset_bottom = 146.0
+columns = 4
+
+[node name="Level 1" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
+layout_mode = 2
+text = "1"
+level_to_load = "res://wormtest2.tscn"
+
+[node name="Level 2" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
+layout_mode = 2
+text = "2"
+level_to_load = "level 2"
+
+[node name="Level 3" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
+layout_mode = 2
+text = "3"
+level_to_load = "level 3"
+
+[node name="Button" type="Button" parent="LevelSelectScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 225.0
+offset_top = 10.0
+offset_right = 270.0
+offset_bottom = 41.0
+grow_horizontal = 0
+pivot_offset = Vector2(45, 0)
+text = "Back
+"
+
+[connection signal="pressed" from="MainScreen/MainMenuOptions/Start" to="." method="StartGame"]
+[connection signal="pressed" from="MainScreen/MainMenuOptions/Level Select" to="." method="OpenLevelSelect"]
+[connection signal="pressed" from="MainScreen/MainMenuOptions/Quit" to="." method="Quit"]
+[connection signal="pressed" from="LevelSelectScreen/Button" to="." method="OpenMainMenu"]
