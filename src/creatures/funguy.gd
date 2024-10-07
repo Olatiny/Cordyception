@@ -2,6 +2,9 @@ class_name FunGuy
 extends ControllableCreature
 
 
+const POSSESS_SOUND = preload("res://assets/Audio/possess.wav")
+
+
 ## States the player can be in
 enum STATE {
 	IDLE,
@@ -79,6 +82,8 @@ func possess():
 	var valid_bugs: Array[Node2D] = possess_area.get_overlapping_bodies()
 	valid_bugs.erase(self)
 	print("possess ",valid_bugs," ",valid_bugs.size())
+	
+	AudioManager.play_sfx(POSSESS_SOUND)
 	
 	# no bugs to possess
 	if valid_bugs.size() <= 0:

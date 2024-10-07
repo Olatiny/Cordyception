@@ -37,6 +37,8 @@ func unpossess(kill : bool, poison := false) -> void:
 		alive = false
 		modulate = Color(.2, .2, .2)
 		scale.y = -1
+	else:
+		AudioManager.play_sfx(UNPOSSESS_SOUND)
 	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position + Vector2(0, -4)

@@ -18,6 +18,8 @@ var ANIM_DICT = {
 	STATE.DESTROY: "walk"
 }
 
+const BREAK_SOUND = preload("res://assets/Audio/break.wav")
+
 @export var dig_speed := 100
 @export var dig_turn_speed := 2
 @export var dig_end_boost := 100
@@ -166,6 +168,7 @@ func check_primary_action() -> void:
 	
 	if !alive:
 		primary_used = true
+		AudioManager.play_sfx(BREAK_SOUND)
 		unpossess(true)
 		dirt_tile_map.set_cells_terrain_connect(dirt_tile_map.get_used_cells(), 0, 0)
 
