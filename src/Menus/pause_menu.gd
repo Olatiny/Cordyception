@@ -24,7 +24,7 @@ func _resume():
 
 
 func _restart():
-	pass
+	TommyGameManager.reset_level()
 
 
 func _main_menu():

@@ -27,6 +27,9 @@ var _max_secondary_uses := num_secondary_uses
 
 
 func _physics_process(delta: float) -> void:
+	if TommyGameManager.in_menu:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

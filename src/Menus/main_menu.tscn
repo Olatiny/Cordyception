@@ -1,8 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmy1hldxwv88y"]
+[gd_scene load_steps=24 format=3 uid="uid://bmy1hldxwv88y"]
 
-[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_ld2xq"]
 [ext_resource type="Script" path="res://src/Menus/main_menu.gd" id="1_srb4k"]
-[ext_resource type="PackedScene" uid="uid://ffswee3ghga6" path="res://src/Menus/level_button.tscn" id="3_wc01h"]
+[ext_resource type="Texture2D" uid="uid://cll1poahstv1g" path="res://assets/environment/Witch Hut.png" id="3_04lfy"]
+[ext_resource type="Texture2D" uid="uid://c8gubf6aexvuj" path="res://assets/environment/Background Layers/Back Layer BG.png" id="3_rs408"]
+[ext_resource type="Texture2D" uid="uid://cnw4128xknuaw" path="res://assets/environment/Mushroom 2.png" id="3_uoqxy"]
+[ext_resource type="FontFile" uid="uid://cnw6mdsr7r60" path="res://assets/temp/GrapeSoda.ttf" id="3_vpkc1"]
+[ext_resource type="Texture2D" uid="uid://bl8ls8huslpmi" path="res://assets/environment/Mushroom 3.png" id="4_5bway"]
+[ext_resource type="Texture2D" uid="uid://cufgg1ds6ksn" path="res://assets/environment/Mushroom 5.png" id="5_tvo7s"]
+[ext_resource type="Texture2D" uid="uid://ib20j5ft6qku" path="res://assets/environment/Fungus 2.png" id="6_1ugtl"]
+[ext_resource type="Texture2D" uid="uid://diqx4jmn1ihhv" path="res://assets/environment/Fungus 1.png" id="7_dvigj"]
+[ext_resource type="Texture2D" uid="uid://cod2a7nivtwd7" path="res://assets/characters/Witch.png" id="9_edvmp"]
+[ext_resource type="Texture2D" uid="uid://dlvmrjxj4h6el" path="res://assets/characters/Roller.png" id="9_tt44s"]
+[ext_resource type="Texture2D" uid="uid://bd7xvumabrvgo" path="res://assets/environment/Mushroom 4.png" id="10_w0hor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bkk2u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3toh"]
+atlas = ExtResource("9_edvmp")
+region = Rect2(0, 0, 15, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g5mg"]
+atlas = ExtResource("9_edvmp")
+region = Rect2(15, 0, 15, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffw1d"]
+atlas = ExtResource("9_edvmp")
+region = Rect2(30, 0, 15, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8k8"]
+atlas = ExtResource("9_edvmp")
+region = Rect2(45, 0, 15, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xokc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3toh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g5mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffw1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8k8")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc85f"]
+atlas = ExtResource("9_tt44s")
+region = Rect2(0, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2vfe"]
+atlas = ExtResource("9_tt44s")
+region = Rect2(32, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq028"]
+atlas = ExtResource("9_tt44s")
+region = Rect2(64, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0v46"]
+atlas = ExtResource("9_tt44s")
+region = Rect2(96, 0, 32, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1j0x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc85f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2vfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq028")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0v46")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Control"]
 clip_contents = true
@@ -17,117 +100,190 @@ size_flags_vertical = 3
 script = ExtResource("1_srb4k")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-offset_right = 320.0
-offset_bottom = 180.0
-texture = ExtResource("1_ld2xq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rs408")
 expand_mode = 1
 
 [node name="MainScreen" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 45.0
-offset_bottom = 45.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="MainScreen"]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 165.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 24
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 170.0
+offset_bottom = 39.0
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 32
 text = "Cordyception"
 
 [node name="MainMenuOptions" type="VBoxContainer" parent="MainScreen"]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 45.0
-offset_right = 109.0
-offset_bottom = 146.0
+offset_left = 15.0
+offset_top = 50.0
+offset_right = 70.0
+offset_bottom = 130.0
 
 [node name="Start" type="Button" parent="MainScreen/MainMenuOptions"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-focus_neighbor_bottom = NodePath("../Level Select")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
 text = "Start"
 alignment = 0
 
-[node name="Level Select" type="Button" parent="MainScreen/MainMenuOptions"]
+[node name="Credits" type="Button" parent="MainScreen/MainMenuOptions"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-focus_neighbor_top = NodePath("../Start")
-focus_neighbor_bottom = NodePath("../Quit")
 theme_override_font_sizes/font_size = 16
-text = "Level Select"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
+text = "Credits"
 alignment = 0
 
 [node name="Quit" type="Button" parent="MainScreen/MainMenuOptions"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-focus_neighbor_top = NodePath("../Level Select")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
 text = "Quit"
 alignment = 0
 
-[node name="LevelSelectScreen" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="LevelSelectScreen"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 165.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 24
-text = "Level Select"
-
-[node name="Levels" type="GridContainer" parent="LevelSelectScreen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainScreen"]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 45.0
-offset_right = 109.0
-offset_bottom = 146.0
-columns = 4
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -155.5
+offset_top = -88.0
+offset_right = 155.5
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Level 1" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
+[node name="TextureRect2" type="TextureRect" parent="MainScreen/HBoxContainer"]
 layout_mode = 2
-text = "1"
-level_to_load = "res://wormtest2.tscn"
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("3_uoqxy")
 
-[node name="Level 2" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
+[node name="TextureRect4" type="TextureRect" parent="MainScreen/HBoxContainer"]
 layout_mode = 2
-text = "2"
-level_to_load = "level 2"
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("4_5bway")
 
-[node name="Level 3" parent="LevelSelectScreen/Levels" instance=ExtResource("3_wc01h")]
+[node name="TextureRect5" type="TextureRect" parent="MainScreen/HBoxContainer"]
 layout_mode = 2
-text = "3"
-level_to_load = "level 3"
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("5_tvo7s")
 
-[node name="Button" type="Button" parent="LevelSelectScreen"]
+[node name="TextureRect6" type="TextureRect" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("6_1ugtl")
+
+[node name="TextureRect7" type="TextureRect" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("7_dvigj")
+
+[node name="TextureRect" type="TextureRect" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_04lfy")
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="MainScreen/HBoxContainer/TextureRect"]
+position = Vector2(36.5, 46)
+sprite_frames = SubResource("SpriteFrames_1xokc")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.315086
+
+[node name="TextureRect2" type="AnimatedSprite2D" parent="MainScreen/HBoxContainer/TextureRect"]
+position = Vector2(101.5, 78)
+sprite_frames = SubResource("SpriteFrames_f1j0x")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.535436
+offset = Vector2(0.5, 0.5)
+
+[node name="TextureRect8" type="TextureRect" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("10_w0hor")
+
+[node name="CreditsScreen" type="Control" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = 225.0
-offset_top = 10.0
-offset_right = 270.0
-offset_bottom = 41.0
-grow_horizontal = 0
-pivot_offset = Vector2(45, 0)
-text = "Back
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CreditsScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_right = 49.0
+offset_bottom = 147.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CreditsScreen/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CreditsScreen/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="RichTextLabel" parent="CreditsScreen/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0.105882, 0.0784314, 0.0980392, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("3_vpkc1")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Thomas Gelman: [color=#AAAAAA] Programming, Design, Audio [/color]
+Faye Glynn: [color=#AAAAAA] Programming, Design, Management [/color]
+Jack Grace: [color=#AAAAAA] Programming, Design [/color]
+Pranav Krishna Kumar: [color=#AAAAAA] Level Design [/color]
+Max Eddington: [color=#AAAAAA] Art, Design [/color]
+Lainey Harding:  [color=#AAAAAA] Art, Design [/color]
 "
+fit_content = true
+autowrap_mode = 0
+
+[node name="Main" type="Button" parent="CreditsScreen/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bkk2u")
+text = "Return"
 
 [connection signal="pressed" from="MainScreen/MainMenuOptions/Start" to="." method="StartGame"]
-[connection signal="pressed" from="MainScreen/MainMenuOptions/Level Select" to="." method="OpenLevelSelect"]
+[connection signal="pressed" from="MainScreen/MainMenuOptions/Credits" to="." method="OpenCredits"]
 [connection signal="pressed" from="MainScreen/MainMenuOptions/Quit" to="." method="Quit"]
-[connection signal="pressed" from="LevelSelectScreen/Button" to="." method="OpenMainMenu"]
+[connection signal="pressed" from="CreditsScreen/HBoxContainer/Main" to="." method="OpenMainMenu"]
