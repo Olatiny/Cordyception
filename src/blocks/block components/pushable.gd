@@ -34,7 +34,12 @@ func activate():
 	if bodies.is_empty():
 		return
 	
-	var enemy = bodies.front()
+	var enemy: ControllableCreature
+	while !bodies.is_empty():
+		enemy = bodies.pop_front()
+		if enemy.controlled:
+			break
+	
 	dir.x = -1 if block.global_position.x - enemy.global_position.x < 0 else 1
 	dir.y = 0
 	goal_pos = start_pos + dir * 8
