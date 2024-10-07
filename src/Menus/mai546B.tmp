@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmy1hldxwv88y"]
+
+[ext_resource type="Texture2D" uid="uid://8iufllcujsko" path="res://icon.svg" id="1_ld2xq"]
+[ext_resource type="Script" path="res://src/Menus/main_menu.gd" id="1_srb4k"]
+
+[node name="MainMenu" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_srb4k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_ld2xq")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 24
+text = "Cordyception"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_top = 35.0
+offset_right = 99.0
+offset_bottom = 136.0
+
+[node name="Start" type="Button" parent="CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../Level Select")
+theme_override_font_sizes/font_size = 16
+text = "Start"
+alignment = 0
+
+[node name="Level Select" type="Button" parent="CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+theme_override_font_sizes/font_size = 16
+text = "Level Select"
+alignment = 0
+
+[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Level Select")
+theme_override_font_sizes/font_size = 16
+text = "Quit"
+alignment = 0
