@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	
 	set_state()
 	
-	if (is_on_floor() && primary_used):
+	if (is_on_floor() && primary_used && !unpossessed_post_kill):
 		unpossess(true)
 		primary_used = false
 	
@@ -122,7 +122,7 @@ func check_jump():
 		#unpossess(true)
 
 
-func unpossess(kill : bool, poison := false) -> void:	
+func unpossess(kill : bool, poison := false) -> void:
 	controlled = false
 	if(kill || primary_used):
 		AudioManager.play_sfx(KILL_SOUND)
