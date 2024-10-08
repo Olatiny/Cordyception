@@ -54,6 +54,10 @@ func _physics_process(delta: float) -> void:
 	
 	set_state()
 	
+	if (is_on_floor() && primary_used):
+		unpossess(true)
+		primary_used = false
+	
 	super(delta)
 
 
@@ -113,9 +117,9 @@ func check_jump():
 
 
 ## When grasshopper lands after using big jump, kil
-func _on_land(body: Node2D) -> void:
-	if !unpossessed_post_kill && primary_used && velocity.y >= 0:
-		unpossess(true)
+#func _on_land(body: Node2D) -> void:
+	#if !unpossessed_post_kill && primary_used && velocity.y >= 0:
+		#unpossess(true)
 
 
 func unpossess(kill : bool, poison := false) -> void:	

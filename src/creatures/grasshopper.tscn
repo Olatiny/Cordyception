@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bohfdkcnf15e0"]
+[gd_scene load_steps=14 format=3 uid="uid://bohfdkcnf15e0"]
 
 [ext_resource type="Script" path="res://src/creatures/grasshopper.gd" id="1_x582e"]
 [ext_resource type="Texture2D" uid="uid://bxlw18l6bhknf" path="res://assets/characters/Jumper.png" id="2_t5bfh"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nytr2"]
 size = Vector2(13.5, 11)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1swi"]
-size = Vector2(16, 2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22vbp"]
 radius = 4.47214
@@ -435,10 +432,10 @@ _data = {
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_x582e")
-small_jump_velocity = 70
-big_jump_velocity = 110
-gravity = 125.0
-terminal_velocity = Vector2(75, 500)
+small_jump_velocity = 120
+big_jump_velocity = 200
+gravity = 300.0
+terminal_velocity = Vector2(75, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.75, 5.5)
@@ -452,14 +449,6 @@ hframes = 16
 [node name="Possess" type="Sprite2D" parent="."]
 texture = ExtResource("3_5vdwt")
 hframes = 16
-
-[node name="FloorDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
-position = Vector2(0, 11)
-shape = SubResource("RectangleShape2D_w1swi")
 
 [node name="PushBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -477,5 +466,3 @@ shape = SubResource("CircleShape2D_22vbp")
 libraries = {
 "": SubResource("AnimationLibrary_4xp6b")
 }
-
-[connection signal="body_entered" from="FloorDetector" to="." method="_on_land"]

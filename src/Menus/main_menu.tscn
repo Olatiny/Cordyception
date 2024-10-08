@@ -186,14 +186,12 @@ texture = ExtResource("3_04lfy")
 position = Vector2(36.5, 46)
 sprite_frames = SubResource("SpriteFrames_1xokc")
 animation = &"new_animation"
-autoplay = "new_animation"
 frame_progress = 0.315086
 
 [node name="TextureRect2" type="AnimatedSprite2D" parent="MainScreen/HBoxContainer/TextureRect"]
 position = Vector2(101.5, 78)
 sprite_frames = SubResource("SpriteFrames_f1j0x")
 animation = &"new_animation"
-autoplay = "new_animation"
 frame_progress = 0.535436
 offset = Vector2(0.5, 0.5)
 
