@@ -24,6 +24,7 @@ func restart():
 func play_sfx(sfx_stream: AudioStream, pitch_variation := 0.0):
 	var player := AudioStreamPlayer.new()
 	player.stream = sfx_stream
+	player.volume_db = linear_to_db(0.25)
 	player.finished.connect(Callable(player, "queue_free"))
 	
 	if (pitch_variation > 0):

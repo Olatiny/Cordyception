@@ -108,15 +108,31 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_422cx")
 
-[node name="GrassDetectorLeft" type="RayCast2D" parent="."]
+[node name="RockDetectorLeft" type="RayCast2D" parent="."]
 position = Vector2(-2, 7)
-target_position = Vector2(0, 2)
+target_position = Vector2(0, 4)
 collision_mask = 16
+hit_from_inside = true
+collide_with_areas = true
 
-[node name="GrassDetectorRight" type="RayCast2D" parent="."]
+[node name="RockDetectorRight" type="RayCast2D" parent="."]
 position = Vector2(2, 7)
-target_position = Vector2(0, 2)
+target_position = Vector2(0, 4)
 collision_mask = 16
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="GroundDetectorLeft" type="RayCast2D" parent="."]
+position = Vector2(-2, 7)
+target_position = Vector2(0, 4)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="GroundDetectorRight" type="RayCast2D" parent="."]
+position = Vector2(2, 7)
+target_position = Vector2(0, 4)
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

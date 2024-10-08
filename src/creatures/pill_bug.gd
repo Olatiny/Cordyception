@@ -41,6 +41,12 @@ var my_animation_state := ANIMATION_STATE.IDLE
 ## area 2D for push secondary action
 @onready var wall_box := $WallBox as Area2D
 
+## left facing collision shape for secondary action
+@onready var wall_left_shape := $WallBox/CollisionShapeLeft
+
+## right facing action for secondary action
+@onready var wall_right_shape := $WallBox/CollisionShapeRight
+
 
 var primary_used := false
 
@@ -51,6 +57,13 @@ var climb_shapes = []
 
 ## Updating valid push boxes
 func _physics_process(delta: float) -> void:
+	if face_direction == Vector2.LEFT:
+		wall_left_shape.disabled = true
+		wall_right_shape.disabled = false
+	elif face_direction == Vector2.RIGHT:
+		wall_left_shape.disabled = false
+		wall_right_shape.disabled = true
+	
 	if !alive:
 		my_animation_state = ANIMATION_STATE.IDLE
 		my_state = STATE.BASE

@@ -26,11 +26,17 @@ var my_state := STATE.SPORE_MODE
 @export var num_possessions := 5
 
 
-## left grass detector raycast
-@onready var grass_raycast_left := $GrassDetectorLeft as RayCast2D
+## left rock detector raycast
+@onready var rock_raycast_left := $RockDetectorLeft as RayCast2D
 
-## right grass detector raycast
-@onready var grass_raycast_right := $GrassDetectorRight as RayCast2D
+## right rock detector raycast
+@onready var rock_raycast_right := $RockDetectorRight as RayCast2D
+
+## left ground detector raycast
+@onready var ground_raycast_left := $GroundDetectorLeft as RayCast2D
+
+## right ground detector raycast
+@onready var ground_raycast_right := $GroundDetectorRight as RayCast2D
 
 ## area 2d used for possession
 @onready var possess_area := $PossessArea as Area2D
@@ -63,8 +69,16 @@ func update_state():
 	if my_state == STATE.POSSESSING:
 		return
 	
-	if is_on_floor() && grass_raycast_left.is_colliding() && grass_raycast_right.is_colliding():
-		kill()
+	if is_on_floor():
+		print("right rock: ", rock_raycast_right.is_colliding())
+		print("left rock: ", rock_raycast_left.is_colliding())
+		print("right ground: ", ground_raycast_right.is_colliding())
+		print("left ground: ", ground_raycast_left.is_colliding())
+		
+		if rock_raycast_left.is_colliding() && (rock_raycast_right.is_colliding() || !ground_raycast_left.is_colliding()):
+			kill()
+		elif rock_raycast_right.is_colliding() && (rock_raycast_left.is_colliding() || !ground_raycast_right.is_colliding()):
+			kill()
 	else:
 		my_state = STATE.IDLE
 	

@@ -611,6 +611,8 @@ dig_end_boost = 100
 destroy_end_boost = 150
 can_dig_down = false
 air_drag = 10
+gravity = 300.0
+terminal_velocity = Vector2(75, 500)
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -3)
