@@ -634,19 +634,19 @@ texture = ExtResource("4_nykdn")
 hframes = 20
 
 [node name="DirtDetectorDownLeft" type="RayCast2D" parent="." index="4"]
-position = Vector2(-10, 3)
+position = Vector2(-10, 2)
 target_position = Vector2(-2, 0)
 
 [node name="DirtDetectorDownRight" type="RayCast2D" parent="." index="5"]
-position = Vector2(10, 3)
+position = Vector2(10, 2)
 target_position = Vector2(2, 0)
 
 [node name="DirtDetectorUpLeft" type="RayCast2D" parent="." index="6"]
-position = Vector2(-10, -3)
+position = Vector2(-10, -4)
 target_position = Vector2(-2, 0)
 
 [node name="DirtDetectorUpRight" type="RayCast2D" parent="." index="7"]
-position = Vector2(10, -3)
+position = Vector2(10, -4)
 target_position = Vector2(2, 0)
 
 [node name="DirtDetectorDown" type="RayCast2D" parent="." index="8"]
