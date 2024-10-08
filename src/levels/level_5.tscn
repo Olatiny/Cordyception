@@ -49,3 +49,17 @@ position = Vector2(136, 72)
 
 [node name="grasshopper2" parent="." instance=ExtResource("6_jdcsu")]
 position = Vector2(218, 19)
+
+[connection signal="body_entered" from="Grass/Poison" to="Grass/Poison" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27051" to="Grass/@Area2D@27051" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27052" to="Grass/@Area2D@27052" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27053" to="Grass/@Area2D@27053" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27054" to="Grass/@Area2D@27054" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27055" to="Grass/@Area2D@27055" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27056" to="Grass/@Area2D@27056" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27057" to="Grass/@Area2D@27057" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27058" to="Grass/@Area2D@27058" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27059" to="Grass/@Area2D@27059" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27060" to="Grass/@Area2D@27060" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27061" to="Grass/@Area2D@27061" method="_on_body_entered"]
+[connection signal="body_entered" from="Grass/@Area2D@27129" to="Grass/@Area2D@27129" method="_on_body_entered"]
