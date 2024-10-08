@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += 950 * delta
-		move_and_slide()
 	
 	var state_set = false
 	
@@ -44,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	# overflow check lmao
 	if time_elapsed < 0:
 		time_elapsed = 0
+	
+	move_and_slide()
 
 
 func set_state(idx: int, guys: Array[Node2D]) -> bool:

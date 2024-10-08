@@ -31,6 +31,9 @@ var my_animation_state := ANIMATION_STATE.IDLE
 ## jump velocity for small jump
 @export var jump_velocity := 50
 
+## move speed for when ball forme
+@export var ball_speed := 50
+
 ## jump velocity for big jump
 @export var ascend_velocity := 450
 
@@ -41,25 +44,35 @@ var my_animation_state := ANIMATION_STATE.IDLE
 
 var primary_used := false
 
+var just_entered_ball := false
+
 var climb_shapes = []
 
 
 ## Updating valid push boxes
 func _physics_process(delta: float) -> void:
-	super(delta)
-	
 	if !alive:
 		my_animation_state = ANIMATION_STATE.IDLE
 		my_state = STATE.BASE
 		$Sprite2D.rotation_degrees = 0
 	
-	update_state()
+	@warning_ignore("redundant_await")
+	await update_state()
 	
 	if primary_used && alive:
 		velocity.y = -ascend_velocity
+	
+	super(delta)
 
 
 func update_state():
+	if just_entered_ball:
+		var temp := position
+		$AnimationPlayer.play("enter_roll_" + ("L" if face_direction.x < 0 else "R"))
+		await $AnimationPlayer.animation_finished
+		position = temp
+		just_entered_ball = false
+		
 	if my_animation_state == ANIMATION_STATE.JUMP && not is_on_floor():
 		return
 	
@@ -82,6 +95,14 @@ func check_primary_action() -> void:
 	climb_shapes = wall_box.get_overlapping_bodies()
 	climb_shapes.erase(self)
 	
+	var rem_q = []
+	for shape in climb_shapes:
+		if shape is Blorticepts:
+			rem_q.push_back(shape)
+	
+	for shape in rem_q:
+		climb_shapes.erase(shape)
+	
 	## Not against wall somehow
 	if climb_shapes.is_empty():
 		return
@@ -91,6 +112,7 @@ func check_primary_action() -> void:
 	my_state = STATE.SPIKE
 	my_animation_state = ANIMATION_STATE.SPIKE_ROLL
 	velocity.y = -ascend_velocity
+	velocity.x = face_direction.x * ascend_velocity
 	
 	primary_used = true
 
@@ -102,6 +124,7 @@ func check_secondary_action() -> void:
 	
 	if my_state == STATE.BASE:
 		my_state = STATE.PILL
+		just_entered_ball = true
 	elif my_state == STATE.PILL:
 		my_state = STATE.BASE
 
@@ -131,10 +154,10 @@ func _base_movement():
 func _pill_movement():
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if direction:
-		velocity.x += direction * walk_speed
+	if direction != 0:
+		velocity.x += direction * ball_speed
 	else:
-		velocity.x += move_toward(velocity.x, 0, walk_speed)
+		velocity.x += face_direction.x * ball_speed
 
 
 ## Checks for jump
@@ -185,7 +208,10 @@ func unpossess(kill : bool, poison := false) -> void:
 	else:
 		AudioManager.play_sfx(UNPOSSESS_SOUND)
 	
+	if primary_used:
+		velocity.y = 0
+	
 	var fun_dude := FUNGUY.instantiate() as FunGuy
 	fun_dude.global_position = global_position + Vector2(0, -4)
-	fun_dude.velocity.y = -ascend_velocity if primary_used else -fun_dude.jump_velocity
+	fun_dude.velocity.y = -ascend_velocity / 1.6 if primary_used else -fun_dude.jump_velocity
 	get_parent().call_deferred("add_child", fun_dude)
