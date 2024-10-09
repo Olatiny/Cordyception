@@ -70,11 +70,6 @@ func update_state():
 		return
 	
 	if is_on_floor():
-		print("right rock: ", rock_raycast_right.is_colliding())
-		print("left rock: ", rock_raycast_left.is_colliding())
-		print("right ground: ", ground_raycast_right.is_colliding())
-		print("left ground: ", ground_raycast_left.is_colliding())
-		
 		if rock_raycast_left.is_colliding() && (rock_raycast_right.is_colliding() || !ground_raycast_left.is_colliding()):
 			kill()
 		elif rock_raycast_right.is_colliding() && (rock_raycast_left.is_colliding() || !ground_raycast_right.is_colliding()):

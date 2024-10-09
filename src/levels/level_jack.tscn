@@ -54,10 +54,3 @@ position = Vector2(168, 48)
 
 [node name="PillBug" parent="." instance=ExtResource("10_35qt3")]
 position = Vector2(139, 166)
-
-[connection signal="body_entered" from="Rock/Poison" to="Rock/Poison" method="_on_body_entered"]
-[connection signal="body_entered" from="Rock/@Area2D@93139" to="Rock/@Area2D@93139" method="_on_body_entered"]
-[connection signal="body_entered" from="Rock/@Area2D@93176" to="Rock/@Area2D@93176" method="_on_body_entered"]
-[connection signal="body_entered" from="Rock/@Area2D@93177" to="Rock/@Area2D@93177" method="_on_body_entered"]
-[connection signal="body_entered" from="Rock/@Area2D@93178" to="Rock/@Area2D@93178" method="_on_body_entered"]
-[connection signal="body_entered" from="Rock/@Area2D@93179" to="Rock/@Area2D@93179" method="_on_body_entered"]
